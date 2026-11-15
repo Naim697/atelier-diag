@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 // Traduction française des titres SAE et des causes courantes, par glossaire.
 // Quand un mot n'est pas au glossaire, le titre reste en anglais : jamais de traduction devinée.
 
@@ -140,4 +141,9 @@ const CAUSE = {
   'Transmission module': 'Calculateur de boîte', 'Coil open': 'Bobine coupée', 'Valve stuck or coil failed': 'Vanne grippée ou bobine défaillante', 'Switch failed': 'Contacteur défaillant', 'Calibration not performed': 'Calibration non faite', 'Charging system overvoltage': 'Surtension du circuit de charge',
   'Driver in the engine module faulty': 'Étage de commande du calculateur moteur défaillant', 'Contaminated fuel ': 'Carburant pollué', 'Boost leak or loose injector clamp': 'Fuite de suralimentation ou bride d’injecteur desserrée',
 };
+// Causes des codes les plus courants, traduites à la main : deux fichiers alignés ligne à ligne.
+const EN = readFileSync(new URL('./causes-en.txt', import.meta.url), 'utf8').split('\n');
+const FR = readFileSync(new URL('./causes-fr.txt', import.meta.url), 'utf8').trimEnd().split('\n');
+if (EN.length !== FR.length) throw new Error(`causes-en (${EN.length}) et causes-fr (${FR.length}) ne sont pas alignés`);
+EN.forEach((en, i) => { if (!CAUSE[en]) CAUSE[en] = FR[i]; });
 export function frCause(en) { return CAUSE[en] || CAUSE[en.trim()] || ''; }

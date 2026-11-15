@@ -1,0 +1,465 @@
+Chaîne de distribution détendue, ou courroie ou chaîne décalée d’une dent
+Déphaseur d’arbre à cames bloqué en butée, électrovanne d’huile ou pression d’huile en défaut
+Mauvais calage après un remplacement de courroie ou de chaîne
+Signal du capteur d’arbre à cames ou de vilebrequin perturbé
+Cible du vilebrequin ou de l’arbre à cames qui a tourné
+Basse pression insuffisante : pompe de gavage, filtre colmaté, réservoir presque vide ou gazole figé
+Pompe haute pression usée
+Régulateur de pression ou de débit qui grippe
+Fuite haute pression ou retour d’injecteurs excessif
+Capteur de pression de rampe qui dérive
+Retour de carburant bouché (diesel avec régulateur de pression)
+Logiciel du calculateur moteur
+Connecteur débranché ou oxydé, fil de signal ou d’alimentation coupé
+Capteur en défaut interne (élément cassé, électronique morte)
+Fusible ou relais d’alimentation défaillant
+Entrée du calculateur défaillante
+Prise d’air entre le capteur et le moteur (conduit d’admission fendu ou déboîté, fuite de suralimentation)
+Élément de mesure encrassé (huile d’un filtre sport huilé, poussière)
+Reniflard de carter qui fuit ou débranché
+Filtre à air colmaté ou mal monté, admission modifiée
+Capteur vieilli ou mauvais contact dans le faisceau
+Fil de signal coupé ou en court-circuit à la masse, connecteur oxydé ou desserré
+Électronique du capteur défaillante
+Alimentation absente (fusible, relais) ou mauvaise masse
+Grosse fuite ou conduit débranché entre le capteur et le papillon
+Fil de signal en court-circuit au plus ou au fil d’alimentation
+Parasites : faisceau trop près des bobines, de relais ou de moteurs
+Eau dans le connecteur ou sur l’élément de mesure
+Prise d’air au collecteur d’admission ou fuite de suralimentation (durite, collier, échangeur)
+Capteur huilé ou encrassé de suie, orifice bouché (suie d’EGR), caractéristique dérivée
+Résistance élevée sur le fil de signal, de référence ou de masse
+Capteur de comparaison faux, ou cause mécanique (papillon encrassé, EGR bloquée ouverte)
+Connecteur ou faisceau du capteur coupé ou oxydé
+Capteur défectueux, ou débitmètre à sonde de température intégrée défectueux
+Alimentation ou masse du capteur perturbée
+Connecteur débranché ou desserré, ou fil coupé
+Fil de retour (masse) du capteur coupé
+Fil de signal en court-circuit à une tension
+Connecteur oxydé ou desserré, broche écartée
+Fil de signal ou de masse coupé ou usé par frottement
+Capteur en défaut interne (court-circuit, coupure, liquide de refroidissement à l’intérieur)
+Entrée du calculateur ou alimentation 5 V défaillante
+Connecteur débranché ou oxydé, contact coupé
+Fil de signal ou de masse du capteur coupé
+Fil de signal en court-circuit au 5 V ou au plus batterie
+Connecteur du boîtier papillon oxydé ou desserré, fil coupé
+Capteur, ou boîtier papillon à capteur intégré, défectueux
+Référence 5 V perturbée (court-circuit sur un autre capteur du même circuit)
+Papillon calaminé ou qui grippe mécaniquement
+Piste du potentiomètre usée (signal qui colle ou qui saute)
+Prise d’air ou capteur de débit ou de pression d’air défectueux (comparaison au modèle)
+Résistance de contact sur le fil de signal ou de masse
+Capteur ou butée de ralenti déréglés (commande par câble)
+Thermostat bloqué ouvert ou qui s’ouvre trop tôt
+Sonde de température qui lit trop bas, ou oxydation et résistance dans son circuit
+Niveau de liquide de refroidissement bas ou air dans le circuit
+Motoventilateur qui tourne en permanence (relais collé, mauvaise commande)
+Conditions d’utilisation (beaucoup de ralenti, grand froid, chauffage à fond)
+Faisceau ou connecteur de la sonde amont du banc 1 abîmé, oxydé ou mouillé
+Sonde lambda en défaut interne
+Fuite d’échappement avant la sonde ou défaut de mélange (versions à test de plausibilité)
+Mauvais type de sonde ou sonde adaptable
+Calculateur ou circuit d’interface de la sonde défaillant
+Sonde amont vieillie, encrassée ou empoisonnée (huile, silicone, liquide de refroidissement, additifs)
+Fuite d’échappement avant la sonde (joint de collecteur, fissure)
+Chauffage de la sonde faible ou intermittent (sonde trop froide)
+Défaut de mélange : prise d’air, injecteurs, pression de carburant, débitmètre
+Résistance dans le faisceau ou sonde adaptable aux caractéristiques différentes
+Élément chauffant de la sonde grillé (sonde à remplacer)
+Fusible ou relais de l’alimentation du chauffage défaillant
+Faisceau ou connecteur du chauffage coupé, oxydé ou en court-circuit
+Sonde de remplacement inadaptée (résistance de chauffage différente)
+Commande de chauffage du calculateur défaillante
+Élément chauffant de la sonde grillé (remplacer la sonde)
+Alimentation du chauffage (fusible, relais) ou fil de commande coupé
+Court-circuit dans le chauffage (courant trop fort)
+Connecteur oxydé, résistance de contact
+Prise d’air après le débitmètre (joint de collecteur, durites de dépression, joint de papillon, durite d’assistance de freinage)
+Reniflard de carter qui fuit ou défaillant (durite, membrane du cache-culbuteurs, bouchon d’huile, jauge)
+Débitmètre encrassé ou qui dérive (mesure trop peu d’air)
+Pression ou débit de carburant trop faible (pompe fatiguée, filtre colmaté, régulateur, réservoir presque vide)
+Injecteurs encrassés, ou fuite d’échappement avant la sonde lambda
+Électrovanne de purge bloquée ouverte ou canister saturé
+Injecteurs qui fuient ou qui gouttent (injection directe aussi)
+Pression de carburant trop haute (régulateur défaillant, retour bouché, durite de dépression du régulateur)
+Essence dans l’huile moteur (petits trajets, injecteurs qui fuient), vapeurs par le reniflard
+Filtre à air ou admission colmatés, débitmètre qui lit trop haut ; flexfuel : taux d’éthanol mal appris
+Connecteur oxydé ou eau au capteur de pression de rampe
+Capteur de pression de rampe défectueux
+Faisceau abîmé (chaleur, frottement)
+Référence 5 V perturbée
+Capteur de pression de rampe qui dérive ou figé (mauvais zéro à 0 bar)
+Vrai défaut de pression : pompe haute pression, régulateur de pression ou de débit, pompe de réservoir
+Connecteur oxydé, résistance de contact sur le signal ou la masse
+Manque de carburant ou filtre colmaté
+Logiciel du calculateur
+Masse du capteur coupée ou résistive
+Fil de signal coupé ou en court-circuit à une tension
+Calculateur moteur
+Alimentation commune des injecteurs coupée (fusible, relais, connecteur de faisceau)
+Boîtier de puissance des injecteurs ou son faisceau défaillant (diesel)
+Défaut de masse du calculateur ou de l’étage de puissance
+Connecteur de l’injecteur du cylindre 1 desserré, oxydé ou avec une broche cassée ou reculée
+Bobine d’injecteur coupée
+Fil entre calculateur et injecteur coupé ou usé (chaleur, rongeurs)
+Alimentation des injecteurs absente (fusible, relais) : en général plusieurs cylindres à la fois
+Wastegate bloquée fermée, capsule ou tringle qui grippe, durite de commande débranchée ou bouchée
+Ailettes de géométrie variable encrassées ou bloquées fermées (diesel)
+Électrovanne de régulation de suralimentation ou actionneur électrique défaillant
+Capteur de suralimentation ou de collecteur qui lit trop haut (dérive)
+Logiciel ou calibration, reprogrammation
+Connecteur du capteur de suralimentation oxydé ou desserré, fil coupé
+Capteur de suralimentation défectueux, souvent huilé par le reniflard
+Fuite de suralimentation ou ailettes de turbo bloquées donnant une valeur incohérente
+Référence 5 V mise en court-circuit par un autre capteur
+Fuite de suralimentation (durite, collier, échangeur) entre le turbo et le papillon
+Capteur de suralimentation encrassé, huilé ou qui dérive
+Résistance de contact dans le connecteur ou le faisceau
+Capteur de collecteur ou de pression atmosphérique défectueux (capteur de comparaison)
+Glace ou condensation dans l’échangeur par temps froid
+Masse du capteur coupée, ou fil de signal coupé
+Signal en court-circuit au 5 V ou au 12 V
+Oxydation ou humidité à la masse
+Bobine du régulateur de débit coupée
+Connecteur de l’actionneur oxydé ou desserré, fil coupé
+Alimentation de l’actionneur absente
+Pompe distributrice : électronique interne ou électrovanne de débit défaillante
+Injecteur du cylindre 1 usé, calaminé ou qui fuit
+Logiciel moteur ancien ou diagnostic trop sensible
+Codes de correction des injecteurs non programmés ou mal programmés après remplacement
+Compression faible sur le cylindre 1 (soupape, segments, joint d’injecteur)
+Apprentissage du capteur vilebrequin ou de la cible incorrect, volant bimasse
+Fuite sur le circuit de suralimentation (durite déboîtée ou fendue, échangeur percé, colliers)
+Wastegate défaillante (tige décrochée, précharge perdue, dépression ou électrovanne, membrane)
+Ailettes de turbo qui grippent ou turbo usé (diesel)
+Soupape de décharge qui fuit (membrane percée) ou sa commande
+Glace dans l’échangeur, capteur de suralimentation ou connecteur, ou logiciel
+Prise d’air (durite de dépression, reniflard, joint d’admission)
+Bougies usées ou inadaptées sur plusieurs cylindres, bobines défaillantes
+Pression de carburant trop basse ou trop haute, carburant pollué
+Calage de distribution (chaîne détendue), soupapes, compressions sur plusieurs cylindres
+Fausse détection : cible ou poulie, route dégradée, vibrations, logiciel
+Bobine d’allumage du cylindre 1 défaillante (bobine, connecteur, masse)
+Bougie du cylindre 1 usée, encrassée, fissurée ou mal réglée
+Injecteur du cylindre 1 encrassé ou qui fuit, ou sa commande
+Compression faible sur le cylindre 1 (soupape, segments, joint de culasse) ou prise d’air locale
+Eau ou huile dans le puits de bougie
+Faisceau ou connecteur usé, coupé ou oxydé (capteur souvent sous le collecteur d’admission)
+Capteur de cliquetis défectueux (piézo fissuré, humidité, chaleur)
+Capteur desserré ou mal serré au couple
+Logiciel moteur ou calibration du diagnostic
+Étage d’entrée du calculateur moteur
+Capteur de vilebrequin défectueux (chaleur, âge : panne typique au redémarrage à chaud)
+Connecteur ou faisceau oxydé, usé, imbibé d’huile ou coupé
+Référence 5 V mise en court-circuit par un autre capteur de la même alimentation
+Cible abîmée, desserrée ou chargée de limaille ; entrefer faux après une intervention moteur
+Cible abîmée, voilée, desserrée ou dents chargées de limaille
+Signal du capteur faible ou parasité (entrefer, vieillissement)
+Parasites, mauvaise masse ou blindage
+Mauvaise cible ou mauvais volant moteur monté après une réparation
+Faux contact dans le connecteur
+Capteur d’arbre à cames défectueux (chaleur, humidité)
+Connecteur ou faisceau oxydé ou coupé, référence 5 V perturbée
+Cible de l’arbre à cames ou du déphaseur abîmée, desserrée ou à mauvaise distance
+Distribution décalée ou mal calée
+Humidité dans l’huile moteur due aux petits trajets (hybrides Ford)
+Capteur avec impulsions parasites ou signal faible, entrefer
+Cible du déphaseur abîmée ou mal montée
+Défaut de connecteur ou de faisceau (oxydation, parasites)
+Signal de vilebrequin perturbé (mauvaise référence)
+Bougie(s) de préchauffage du circuit A grillée(s)
+Boîtier ou relais de préchauffage défaillant
+Défaut de faisceau ou de connecteur (ligne de retour, connecteur de bougie, alimentation)
+Alimentation batterie ou contact du boîtier absente (fusible)
+Conduits ou vanne EGR calaminés
+Vanne EGR dure ou défaillante
+Fuite à l’admission ou sur le tuyau EGR
+Capteur de pression ou débitmètre imprécis
+Conduits, vanne ou refroidisseur EGR calaminés
+Vanne EGR défaillante ou bloquée fermée
+Ford : capteur DPFE ou ses durites bouchés, fendus ou inversés
+Diesel : débitmètre qui dérive ou prise d’air après le turbo
+Commande à dépression de la vanne défaillante
+Vanne EGR bloquée ouverte, saleté sous le siège
+Ford : capteur DPFE qui dérive ou durite mal branchée
+Diesel : prise d’air entre débitmètre et turbo, débitmètre qui dérive
+La commande ouvre la vanne sans raison
+Connecteur de la vanne EGR oxydé ou desserré
+Fil de commande ou d’alimentation coupé
+Bobine ou moteur de la vanne EGR grillé
+Étage de commande du calculateur moteur
+Vanne calaminée ou dure
+Entraînement de la vanne (moteur, pignons) usé
+Capteur de position de la vanne imprécis
+Tension d’alimentation trop basse ou défaut de masse
+Connecteur ou fil du capteur de position coupé ou desserré
+Vanne EGR à capteur intégré défectueuse
+Référence 5 V ou masse perturbée
+Catalyseur vieilli ou empoisonné (consommation d’huile, silicone, liquide de refroidissement)
+Catalyseur surchauffé par des ratés ou un mélange riche
+Sonde lambda aval lente, encrassée ou inadaptée
+Fuite d’échappement avant ou au niveau de la sonde aval
+Diesel : catalyseur d’oxydation encrassé ou empoisonné, post-injection défaillante
+Bouchon de réservoir qui fuit, desserré ou inadapté
+Électrovanne de purge qui fuit ou qui grippe
+Durites de vapeurs d’essence, canister ou vanne de mise à l’air fendus ou qui fuient
+Logiciel du calculateur moteur
+Joint du bouchon de réservoir usé, inadapté ou bouchon mal clipsé
+Durites de vapeurs d’essence fendues ou poreuses, ou raccords qui fuient
+Électrovanne de purge ou de mise à l’air qui ne ferme pas
+Pompe de détection de fuite elle-même en fuite (VW, Audi)
+Goulotte de remplissage corrodée, joint de réservoir ou de jauge qui fuit
+Bouchon de réservoir absent, mal clipsé ou joint défectueux
+Durite débranchée ou fendue (canister, goulotte, ligne de purge)
+Vanne de mise à l’air bloquée ouverte ou électrovanne de purge bloquée fermée
+Canister ou goulotte fendus ou corrodés
+Capteur qui dérive ou défectueux
+Tube ou durite de prise de pression bouché ou calaminé
+Vraie contre-pression élevée : filtre à particules ou catalyseur colmaté
+Tube de prise de pression qui fuit ou fuite d’échappement avant le capteur
+Relais de ventilateur (bobine coupée) ou module de commande défaillant
+Connecteur du ventilateur ou du relais oxydé, entrée d’eau ou broche reculée
+Fil de commande coupé ou en court-circuit à la masse
+Moteur de ventilateur ou groupe motoventilateur défaillant
+Calculateur ABS/ESP ou capteur de roue défaillant (source du signal)
+Capteur de vitesse de sortie de boîte ou de vitesse véhicule défectueux ou sale (limaille sur l’aimant)
+Fil ou connecteur coupé ou en court-circuit, oxydation
+Défaut de communication CAN (message absent)
+Mauvaises données de pneus ou de pont programmées
+Capteur de roue ou couronne abîmés ou sales (source ABS)
+Mauvaise taille de pneus, rapport de pont ou codage
+Capteur à signal faible ou cible abîmée
+Parasites dus à un blindage ou une masse abîmés
+Contacteur de feux stop défectueux (contact brûlé ou oxydé)
+Contacteur déréglé, ou agrafe ou butée de pédale usée
+Fil, connecteur ou fusible des feux stop défaillant
+Humidité dans les boîtes à fusibles ou de dérivation
+Boîtier papillon ou vanne de ralenti encrassé ou collé
+Prise d’air (durites, joint d’admission, reniflard)
+Vanne de ralenti défaillante mécaniquement ou électriquement
+Valeurs apprises non remises à zéro après nettoyage
+Prise d’air (durite de dépression, joint d’admission, assistance de freinage)
+Reniflard de carter qui fuit ou mal branché
+Papillon qui ne se ferme pas complètement (dépôts, glace, butée déréglée)
+Vanne de ralenti bloquée ouverte
+Mauvaise valeur apprise du papillon après nettoyage ou remplacement
+Alternateur ou régulateur qui débite trop peu
+Batterie défectueuse (élément en court-circuit)
+Cosses, tresses de masse ou câble d’alternateur oxydés
+Courant de repos élevé ou beaucoup de consommateurs au ralenti
+Contacteur de feux stop déréglé
+Contacteur de feux stop défectueux (contact usé)
+Connecteur, fil ou fusible des feux stop
+Calculateur moteur ou boîtier de servitude
+Défaut interne du calculateur sur la liaison entre processeurs
+Logiciel du calculateur défectueux (mise à jour disponible)
+Coupure ou court-circuit sur une ligne série dédiée entre calculateur moteur et calculateur de boîte
+Tension basse, chutes de tension ou mauvaise masse ou alimentation du calculateur
+Défaut dans le calculateur de boîte à l’autre bout de la ligne
+Défaut matériel interne (processeur, régulateur de tension, étage de sortie)
+Court-circuit sur une référence 5 V capteur qui charge l’alimentation interne
+Fil ou connecteur entre calculateur moteur et boîtier de préchauffage coupé ou oxydé (broche tordue, contact lâche)
+Boîtier de préchauffage défectueux (entrée coupée) ou sans alimentation ni masse (fusible, plus permanent)
+Ligne de commande en court-circuit
+Sortie de commande du calculateur moteur défaillante
+Défaut réel mémorisé dans le calculateur de boîte (capteur, électrovanne, rapport, capteur de vitesse)
+Mauvais niveau ou mauvais état de l’huile de boîte, qui provoque patinage ou codes de rapport
+Faisceau ou connecteur de la boîte oxydé ou abîmé
+Tension de bord basse ou batterie faible
+Calculateur de boîte ou son logiciel défaillant
+Filtre à particules très chargé : les petits trajets répétés empêchent la régénération
+Pain du filtre fissuré ou fondu par une régénération incontrôlée
+Capteur de pression différentielle qui dérive
+Fuite autour du corps du filtre à particules
+Agrafe de connecteur usée : faux contact
+Volet qui grippe à cause de la calamine
+Sonde de température d’échappement défaillante
+Faisceau abîmé par la chaleur
+Moteur de papillon défaillant
+Connecteur desserré ou oxydé
+Faisceau coupé vers le boîtier papillon
+Corps de papillon calaminé, le volet colle
+Moteur de papillon usé
+Piste du capteur de position papillon usée
+Oxydation du connecteur du boîtier papillon
+Capteur de position de pédale usé ou encrassé
+Connecteur de pédale oxydé
+Fusible des injecteurs grillé
+Relais d’alimentation des injecteurs défaillant
+Coupure dans le faisceau d’alimentation
+Fil d’alimentation en court-circuit à la masse
+Batterie faible, tension basse au démarrage
+Prise d’air (joint d’admission, assistance de freinage, durites)
+Clapet de reniflard bloqué ouvert
+Fuite de suralimentation
+Ailettes de géométrie variable collées par la suie
+Capteur de pression de suralimentation qui dérive
+Durite de suralimentation déboîtée ou fendue
+Durite d’admission fendue
+Filtre à particules plein de cendres
+Capteur de pression du filtre à particules défaillant
+Tuyaux de prise de pression du capteur bouchés par la suie
+Tuyaux de prise de pression bouchés ou pliés
+Filtre à particules très chargé après plusieurs régénérations interrompues
+Utilisation surtout en petits trajets
+Capteur de pression différentielle qui lit trop haut
+Faisceau du capteur de position coupé ou en court-circuit
+Élément à effet Hall défaillant après des cycles de chaleur
+Faisceau coupé ou usé près du turbo
+Pompe AdBlue faible ou défaillante
+Filtre AdBlue colmaté par des cristaux
+Fuite sur la ligne AdBlue sous pression
+Catalyseur SCR vieilli ou empoisonné
+Sonde NOx qui dérive
+Fuite d’échappement entre les sondes NOx amont et aval
+AdBlue de mauvaise qualité ou pollué
+Module de dosage bouché par des cristaux d’urée
+Catalyseur SCR vieilli ou pollué
+Sonde NOx défaillante
+Faisceau de la sonde ou faisceau CAN coupé
+Sonde NOx vieillie
+Rendement SCR faible
+Niveau d’huile trop bas, huile en boue ou mauvaise viscosité
+Crépine de l’électrovanne d’huile colmatée
+Électrovanne d’huile qui grippe mécaniquement
+Déphaseur usé ou son verrou qui grippe
+Chaîne de distribution usée ou mal montée après une réparation
+Élément du capteur ou fil interne coupé (vibrations, chaleur)
+Connecteur desserré ou oxydé, fil coupé
+Ligne de signal en court-circuit au plus
+Sonde vieillie ou qui dérive, suie sur la pointe
+Câble ou connecteur abîmé par la chaleur ou les vibrations
+Fuite d’échappement avant la sonde
+Température d’échappement réellement anormale (défaut d’injection)
+Calculateur moteur non alimenté (fusible, masse, fil d’alimentation)
+Faisceau CAN vers le calculateur moteur coupé
+Calculateur moteur en panne interne
+Calculateur de boîte non alimenté ou mal mis à la masse
+Faisceau CAN vers le calculateur de boîte coupé
+Passerelle qui transmet mal les messages CAN
+Calculateur ABS non alimenté (souvent une masse oxydée ou un fusible)
+Faisceau CAN vers l’ABS coupé
+Calculateur ABS défaillant
+Combiné d’instruments non alimenté ou fusible grillé
+Panne interne du combiné d’instruments
+Fil ou connecteur coupé ou oxydé
+Référence ou masse du calculateur
+Connecteur débranché ou fil coupé
+Passage du faisceau ou frottement au niveau de la pompe
+Masse du capteur coupée ou court-circuit au 5 V
+Manque de liquide de refroidissement (fuite, joint de culasse)
+Thermostat bloqué fermé
+Motoventilateur, visco-coupleur ou pompe à eau défaillant, radiateur colmaté
+Sonde de température ou faisceau défectueux (fausse lecture)
+Charge extrême (remorque, côte, chaleur) avec un refroidissement en bon état
+Relais de pompe à carburant défaillant (bobine coupée ou en court-circuit)
+Fil de commande du calculateur au relais coupé ou en court-circuit à la masse ou au plus
+Alimentation, masse ou fusible du relais absent
+Avec un module de pompe : son alimentation, sa masse ou le module lui-même
+Fil de puissance du relais ou du module vers la pompe en court-circuit à la masse (frottement au réservoir ou sous caisse)
+Contact du relais qui ne colle pas, fusible ou alimentation batterie du relais absente
+Moteur de pompe bloqué ou en court-circuit (courant élevé)
+Connecteur de la platine de réservoir oxydé ou brûlé
+Module de commande de pompe défaillant
+Capteur de vilebrequin défectueux ou vieilli (signal faible, parasité)
+Capteur desserré ou entrefer incorrect
+Cible abîmée ou chargée de limaille
+Parasites, mauvaise masse ou faisceau abîmé
+Calculateur moteur ou logiciel
+Fil de signal coupé ou en court-circuit au plus
+Capteur d’arbre à cames défectueux
+Bobine d’allumage A défaillante (étage de puissance dans la bobine ou primaire coupé)
+Connecteur de la bobine oxydé, desserré ou broche écartée
+Fil de commande, d’alimentation ou de masse coupé ou usé
+Fusible ou relais d’alimentation des bobines (en général plusieurs codes)
+Bobine d’allumage B défaillante (étage de puissance dans la bobine ou primaire coupé)
+Connecteur de l’électrovanne de purge oxydé, desserré ou débranché
+Bobine de l’électrovanne de purge coupée ou en court-circuit
+Fil de commande coupé ou usé, ou alimentation absente (fusible, relais principal)
+Joint du bouchon de réservoir usé ou bouchon mal clipsé
+Électrovanne de purge ou de mise à l’air qui ne ferme pas
+Durites ou joints toriques poreux, microfissure du canister ou de la goulotte
+Visco-coupleur usé ou qui fuit, ou son électrovanne défaillante : le ventilateur n’atteint pas ou ne quitte pas sa vitesse
+Moteur de ventilateur dur ou usé, ou ventilateur bloqué
+Capteur de vitesse du ventilateur ou faisceau qui donne une valeur fausse
+Radiateur ou condenseur colmaté, liquide bas
+Courroie d’accessoires qui patine (ventilateur à visco-coupleur entraîné par courroie)
+Capteur ou contacteur en défaut interne
+Connecteur oxydé ou huilé (huile qui remonte par un capteur qui fuit)
+Ligne de signal coupée ou en court-circuit à la masse
+Référence 5 V ou alimentation défaillante (en général avec d’autres codes capteur)
+Capteur qui dérive ou figé (décalage)
+Électrovanne de la pompe à huile ou pompe à deux étages bloquée sur le mauvais étage
+Mauvaise viscosité, niveau d’huile bas ou huile qui mousse
+Pompe à huile ou coussinets usés
+Niveau d’huile trop bas, perte ou consommation d’huile
+Huile trop fluide, dilution par le carburant ou crépine d’aspiration colmatée
+Pompe à huile ou régulateur de pression défaillant ou bloqué
+Coussinets de vilebrequin ou d’arbre à cames usés
+Fausse alerte du logiciel par temps froid
+Connecteur ou contacts oxydés ou desserrés
+Capteur de pression défectueux
+Fil coupé ou usé par frottement
+Connecteur oxydé ou desserré
+Référence 5 V en court-circuit ou absente
+Ligne de signal en court-circuit au plus (par exemple la référence 5 V)
+Capteur de pression en défaut interne
+Surpression extrême (surcharge de fluide, condenseur bouché, ventilateur à l’arrêt)
+Batterie faible ou défectueuse
+Alternateur ou régulateur (charge trop faible ou trop forte)
+Démarrage aux câbles ou chargeur en 24 V
+Cosses de batterie ou tresse de masse oxydées ou desserrées
+Régulateur ou alternateur en surcharge
+Démarrage en 24 V ou chargeur rapide
+Batterie absente ou cosse mal serrée (pics de tension)
+Ligne de commande de l’alternateur depuis le calculateur (charge pilotée)
+Batterie débranchée, déchargée à fond ou remplacée
+Plus permanent du calculateur interrompu (fusible, fil, oxydation)
+Relais principal qui retombe trop tôt : la mémoire n’est pas sauvegardée à la coupure
+Défaut de mémoire interne (EEPROM)
+Défaut matériel interne du calculateur (mémoire vive)
+Humidité ou oxydation dans le calculateur ou à son connecteur
+Mémoire programme corrompue par une reprogrammation interrompue
+Défaut interne de la mémoire flash ou ROM
+Relais de démarreur défaillant (bobine coupée)
+Fil de commande coupé, faisceau usé ou pincé, connecteur oxydé
+Masse, fusible ou alimentation du relais défaillant
+Connecteur ou fil entre calculateur et alternateur (oxydation, coupure, frottement)
+Alternateur ou régulateur défaillant, y compris sa liaison LIN
+Batterie à plat ou défectueuse, démarrage aux câbles ou chargeur branché
+Courroie d’accessoires détendue ou usée
+Calculateur moteur ou passerelle (logiciel, étage de commande)
+Relais de pompe à carburant ou module de commande de pompe défaillant
+Fil ou connecteur vers le relais ou la pompe coupé ou oxydé (réservoir, sous caisse)
+Pompe à carburant elle-même (bobinage coupé, surchauffe)
+Fusible ou point de masse
+Court-circuit à la masse ou au plus sur l’un des capteurs alimentés ou sur son fil
+Fil de signal d’un capteur en court-circuit à une tension
+Faisceau abîmé (frottement, rongeurs, eau dans un connecteur)
+Défaut interne du calculateur (régulateur de référence)
+Court-circuit sur le fil ou dans un capteur raccordé (arbre à cames, pédale, pression)
+Frottement ou eau dans le faisceau ou le connecteur
+Régulateur de tension interne du calculateur
+Fil de commande coupé ou oxydé entre la bobine du relais et le calculateur ou le connecteur
+Bobine de relais coupée ou relais mal enfiché
+Alimentation de la bobine du relais absente (fusible, plus batterie)
+Batterie faible ou chute de tension
+Étage de commande du calculateur défaillant
+Contacteur d’embrayage défectueux ou déréglé (ne commute pas ou trop tard)
+Connecteur ou faisceau du pédalier abîmé ou oxydé
+Tapis de sol ou butée de pédale déplacé, support du contacteur cassé
+Style de conduite (démarrage ou passage de rapport sans débrayer à fond)
+Capteur de vitesse défectueux (circuit Hall ou bobine coupée ou en court-circuit)
+Connecteur ou faisceau oxydé, usé ou broches lâches (pour un capteur interne, le connecteur de traversée aussi)
+Limaille sur l’aimant du capteur ou cible abîmée
+Calculateur de boîte ou son alimentation capteurs défaillante
+Niveau ou qualité de l’huile de boîte (CVT ou automatique)
+Électrovanne de passage ou régulateur de pression qui grippe ou défaillant
+Usure des embrayages ou freins, ou courroie, chaîne ou poulies de variateur usées
+Signal de capteur de vitesse incorrect
+Niveau d’huile trop bas, huile vieille ou brûlée
+Tiroir de commande de l’embrayage de convertisseur usé ou qui grippe, alésage usé
+Embrayage de pontage du convertisseur usé ou glacé
+Électrovanne lente mécaniquement (bonne électriquement)
+Joints de l’arbre de turbine ou pompe qui fuient

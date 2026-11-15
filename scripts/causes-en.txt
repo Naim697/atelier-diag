@@ -1,0 +1,465 @@
+Timing chain stretched, or belt or chain jumped a tooth
+Camshaft phaser stuck at an end stop, oil control valve or oil pressure faulty
+Incorrect assembly after a belt or chain replacement
+Camshaft or crankshaft sensor signal disturbed
+Reluctor wheel on crankshaft or camshaft slipped
+Low-pressure supply too weak: lift pump, clogged filter, low tank level or waxing
+High-pressure pump worn
+Pressure control or metering valve sticking
+High-pressure leak or excessive injector return flow
+Rail pressure sensor drifting
+Fuel return blocked (diesel with pressure control valve)
+Engine control software
+Connector unplugged or corroded, signal or supply wire open
+Sensor faulty internally (broken element, failed electronics)
+Supply fuse or relay failed
+Control module input faulty
+Air leak between sensor and engine (cracked or loose intake duct, boost leak)
+Contaminated sensing element (oil from oiled sport filter, dust)
+Leaking or disconnected crankcase ventilation
+Clogged or wrongly fitted air filter, modified intake
+Aged sensor or poor contact in the wiring
+Signal wire open or shorted to ground, connector corroded or loose
+Sensor electronics failed
+Missing supply voltage (fuse, relay) or poor ground
+Large leak or disconnected duct between sensor and throttle
+Signal wire shorted to voltage or to the supply wire
+Interference from harness routed near ignition coils, relays or motors
+Water in the connector or on the element
+Vacuum leak at the intake manifold or boost leak (hose, clamp, charge air cooler)
+Sensor oiled or sooted, port blocked (EGR soot), characteristic drifted
+High resistance in signal, reference or ground wire
+Comparison sensor wrong, or mechanical cause (dirty throttle, EGR stuck open)
+Connector or wiring to the sensor open or corroded
+Sensor or mass air flow sensor with built-in temperature sensor faulty
+Sensor supply or ground disturbed
+Connector unplugged or loose, or wire broken
+Sensor return (ground) wire open
+Signal wire shorted to a voltage source
+Connector corroded or loose, terminal spread
+Broken or chafed signal or ground wire
+Sensor faulty internally (short, open, coolant inside)
+Control module input or 5 V supply faulty
+Connector unplugged or corroded, contact open
+Broken signal or sensor ground wire
+Signal wire shorted to 5 V or battery voltage
+Connector at the throttle body corroded or loose, broken wire
+Sensor or throttle body with integrated sensor faulty
+5 V reference disturbed (short on another sensor of the same circuit)
+Carboned or mechanically sticking throttle plate
+Worn potentiometer track (signal sticks or jumps)
+Air leak or faulty MAF/MAP sensor (model comparison)
+Contact resistance in signal or ground wire
+Sensor or idle stop misadjusted (cable systems)
+Thermostat stuck open or opening too early
+Coolant sensor reading too low, or corrosion and resistance in its circuit
+Low coolant level or air in the system
+Radiator fan running constantly (relay stuck, wrong control)
+Driving pattern or conditions (much idling, extreme cold, strong heating)
+Wiring or connector of the bank 1 upstream sensor damaged, corroded or wet
+Oxygen sensor faulty internally
+Exhaust leak ahead of the sensor or mixture fault (plausibility versions)
+Wrong or aftermarket sensor type
+Control module or sensor interface chip faulty
+Aged, sooted or poisoned upstream sensor (oil, silicone, coolant, additives)
+Exhaust leak ahead of the sensor (manifold gasket, crack)
+Sensor heater weak or intermittent (sensor too cold)
+Mixture fault: air leak, injectors, fuel pressure, air flow sensor
+Wiring resistance or aftermarket sensor with different characteristics
+Heater element of the sensor burnt out (sensor must be replaced)
+Fuse or relay of the heater supply faulty
+Heater wiring or connector open, corroded or shorted
+Unsuitable replacement sensor (different heater resistance)
+Heater driver in the control module faulty
+Heater element in the sensor burnt out (replace sensor)
+Heater supply (fuse, relay) or control wire open
+Short in the heater (current too high)
+Connector corroded, contact resistance
+Air leak after the air flow sensor (intake manifold gasket, vacuum hoses, throttle body gasket, brake booster line)
+Crankcase ventilation leaking or faulty (PCV hose, diaphragm in valve cover, oil cap, dipstick)
+Air flow sensor dirty or drifting (measures too little air)
+Fuel pressure or delivery too low (weak pump, clogged filter, regulator, tank nearly empty)
+Injectors clogged, or exhaust leak ahead of the oxygen sensor
+Purge valve stuck open or charcoal canister saturated
+Leaking or dripping injectors (also direct injection)
+Fuel pressure too high (faulty regulator, blocked return, regulator vacuum hose)
+Fuel in the engine oil (short trips, leaking injectors), vapour via crankcase ventilation
+Clogged air filter or intake, air flow sensor reading high; flex-fuel: wrongly learned ethanol content
+Connector corroded or water ingress at the rail pressure sensor
+Rail pressure sensor faulty
+Harness damaged (heat, chafing)
+5 V reference disturbed
+Rail pressure sensor drifting or stuck (wrong offset at 0 bar)
+Genuine pressure fault: high-pressure pump, pressure or volume control valve, tank pump
+Connector corroded, contact resistance in signal or ground
+Fuel shortage or clogged filter
+Logiciel du calculateur
+Sensor ground open or high-resistance
+Signal wire open (with pull-up) or shorted to voltage
+Calculateur moteur
+Shared injector supply open (fuse, relay, harness connector)
+Separate injector power stage or its wiring faulty (diesel)
+Ground fault of the module or power stage
+Connector at the cylinder 1 injector loose, corroded or with a broken or pushed-back pin
+Injector coil open
+Wire between module and injector open or chafed (heat, rodents)
+Injector supply missing (fuse, relay) – then usually several cylinders at once
+Wastegate stuck closed, actuator or linkage sticking, control hose off or blocked
+Variable turbine vanes sooted or stuck closed (diesel)
+Boost control valve or electric actuator faulty
+Boost or manifold sensor reading too high (drift)
+Software or calibration, tuning
+Connector at the boost sensor corroded or loose, broken wire
+Boost sensor faulty, often oily from crankcase ventilation
+Charge air leak or jammed turbo vanes causing an implausible value
+5 V reference shorted by another sensor
+Charge air leak (hose, clamp, cooler) between turbo and throttle
+Boost sensor dirty, oily or drifting
+Contact resistance in connector or harness
+Manifold or barometric sensor faulty (correlation partner)
+Ice or condensate in the charge air cooler in cold weather
+Sensor ground open, or signal wire open on a pulled-up input
+Signal shorted to 5 V or 12 V
+Connector corrosion or moisture at the ground
+Metering actuator coil open
+Connector at the actuator corroded or loose, broken wire
+Supply voltage to the actuator missing
+Distributor pump: internal electronics or quantity valve faulty
+Injector of cylinder 1 worn, coked or leaking
+Engine software outdated or diagnosis too sensitive
+Injector correction codes not or wrongly programmed after replacement
+Low compression on cylinder 1 (valve, rings, injector seal)
+Crankshaft sensor or tone wheel learning faulty, dual-mass flywheel
+Leak in the charge air path (hose off or torn, cooler leaking, clamps)
+Wastegate faulty (rod off, preload lost, vacuum or solenoid, diaphragm)
+Turbo vanes sticking or turbo worn (diesel)
+Bypass valve leaking (torn diaphragm) or its control
+Ice in the charge air cooler, boost sensor or connector, or software
+False air (vacuum leak, crankcase ventilation, intake gasket)
+Worn or wrong spark plugs on several cylinders, faulty ignition coils
+Fuel pressure too low or high, contaminated fuel
+Valve timing (stretched chain), valves, compression on several cylinders
+False detection: tone wheel or pulley, rough road, vibration, software
+Ignition coil of cylinder 1 faulty (coil, connector, ground)
+Spark plug of cylinder 1 worn, sooted, cracked or wrongly gapped
+Injector of cylinder 1 clogged or leaking, or its control
+Low compression on cylinder 1 (valve, rings, head gasket) or local false air
+Water or oil in the plug well
+Wiring or connector chafed, broken or corroded (sensor often under the intake manifold)
+Knock sensor faulty (cracked piezo, moisture, heat damage)
+Sensor loose or wrongly torqued
+Engine software or diagnostic calibration
+Engine module input stage
+Crankshaft position sensor faulty (heat, age – typical hot-start failure)
+Connector or wiring corroded, chafed, oil-soaked or open
+5 V reference shorted by another sensor on the same supply
+Tone wheel damaged, loose or clogged with chips; air gap wrong after engine work
+Tone wheel damaged, bent, loose or teeth clogged with chips
+Sensor signal weak or noisy (air gap, ageing)
+Interference, poor ground or shielding
+Wrong tone wheel or flywheel fitted after a repair
+Loose contact in the connector
+Camshaft position sensor faulty (heat, moisture)
+Connector or wiring corroded or open, 5 V reference disturbed
+Tone wheel on the camshaft or phaser damaged, loose or at the wrong distance
+Timing drive jumped or wrongly assembled
+Moisture in the engine oil from short trips (Ford hybrids)
+Sensor with interference pulses or weak signal, air gap
+Tone wheel on the phaser damaged or wrongly fitted
+Connector or wiring fault (corrosion, interference)
+Crankshaft signal disturbed (wrong reference)
+Glow plug(s) in circuit A burnt out
+Glow plug control module or glow relay faulty
+Wiring or connector fault (feedback line, plug connector, supply)
+Missing battery or ignition supply of the control module (fuse)
+EGR passages or valve carboned up
+EGR valve stiff or faulty
+Leak in the intake or EGR pipe
+MAP or MAF sensor inaccurate
+EGR passages, valve or cooler carboned up
+EGR valve faulty or stuck closed
+Ford: DPFE sensor or its hoses blocked, cracked or swapped
+Diesel: air mass meter drifting or air leak after the turbo
+Vacuum control of the valve faulty
+EGR valve stuck open, dirt under the seat
+Ford: DPFE sensor drifting or hose wrong
+Diesel: air leak between air mass meter and turbo, MAF drift
+Valve control opens unintentionally
+Connector at the EGR valve corroded or loose
+Broken control or supply wire
+Coil or motor in the EGR valve burnt out
+Étage de commande du calculateur moteur
+Valve coked or stiff
+Valve drive (motor, gear) worn
+Position sensor in the valve inaccurate
+Supply voltage too low or ground fault
+Connector or wire of the position sensor open or loose
+EGR valve with integrated sensor faulty
+5 V reference or ground disturbed
+Catalyst aged or poisoned (oil consumption, silicone, coolant)
+Catalyst overheated by misfire or rich running
+Rear oxygen sensor sluggish, dirty or unsuitable
+Exhaust leak ahead of or at the rear sensor
+Diesel: oxidation catalyst sooted or poisoned, post-injection faulty
+Fuel cap leaking, loose or wrong
+Purge valve leaking or sticking
+Leaking or cracked EVAP hoses, canister or vent valve
+Logiciel du calculateur moteur
+Fuel cap seal worn, wrong or not clicked in
+Cracked or porous EVAP hoses or leaking connections
+Purge or vent valve does not seal
+Leak detection pump itself leaking (VW/Audi)
+Filler neck corroded, tank or sender seal leaking
+Fuel cap missing, not clicked in or seal faulty (or capless flap)
+Hose off or cracked (canister, filler neck, purge line)
+Vent valve stuck open or purge valve stuck closed
+Canister or filler neck cracked or corroded
+Sensor drifting or faulty
+Sensing tube or hose blocked or coked
+Real high back pressure from a clogged particulate filter or catalyst
+Leaking sensing tube or exhaust leak ahead of the sensor
+Fan relay (coil open) or fan control module faulty
+Connector at fan or relay corroded, water ingress or pin pushed out
+Control wire open or shorted to ground
+Fan motor or fan assembly faulty
+ABS/ESP module or wheel speed sensor faulty (signal source)
+Output speed sensor or vehicle speed sensor faulty or dirty (metal debris on the magnet)
+Wire or connector open or shorted, corrosion
+CAN communication fault (message missing)
+Wrong tyre or axle data programmed
+Wheel speed sensor or tone ring damaged or dirty (ABS source)
+Wrong tyre size, axle ratio or coding
+Sensor with weak signal or damaged tone wheel
+Interference from damaged shielding or ground
+Brake light switch faulty (burnt or corroded contact)
+Switch misadjusted or retaining clip or stop pad worn
+Wire, connector or brake light fuse faulty
+Moisture in fuse or junction boxes
+Throttle body or idle valve dirty or gummed
+False air (hoses, intake gasket, crankcase ventilation)
+Idle valve faulty mechanically or electrically
+Learned values not reset after cleaning
+False air (vacuum hose, intake gasket, brake booster)
+Crankcase ventilation leaking or wrongly routed
+Throttle not closing fully (deposits, ice, stop misadjusted)
+Idle valve stuck open
+Wrong throttle learned value after cleaning or replacement
+Alternator or regulator delivering too little
+Battery faulty (shorted cell)
+Corroded terminals, ground straps or alternator cable
+High quiescent current or many consumers at idle
+Brake light switch misadjusted
+Brake light switch faulty (worn contact)
+Connector, wire or brake light fuse
+Engine or body module
+Internal module fault in the processor-to-processor link
+Faulty module software (update available)
+Open or short in a dedicated serial line between engine and transmission module (e.g. Subaru)
+Low voltage, voltage dips or a poor ground or supply at the module
+Fault in the transmission module at the other end of the line
+Internal hardware defect (processor, voltage regulator, output stage chip)
+Short on a 5 V sensor reference loading the internal supply
+Wire or connector between engine and glow module open or corroded (bent pin, contact tension)
+Glow module faulty (input open) or without supply or ground (fuse, terminal 30)
+Control line shorted (makers reporting all line faults under P0670, e.g. Saab)
+Output driver in the engine module faulty
+Actual fault stored in the transmission module (sensor, solenoid, ratio, speed sensor)
+Wrong transmission fluid level or condition causing slip or ratio codes
+Harness or connector at the transmission corroded or damaged
+Low system voltage or weak battery
+Transmission module or software faulty
+DPF heavily loaded — repeated short trips prevent regeneration
+Filter substrate cracked or melted from runaway regeneration
+Differential pressure sensor drift
+Leak around DPF housing
+Connector clip worn — intermittent contact
+Flap sticking due to carbon
+EGT sensor failed
+Wiring damaged by heat
+Throttle motor failed
+Connector loose or corroded
+Wiring break to throttle body
+Throttle bore coked, plate sticks
+Throttle motor worn
+Throttle position sensor track worn
+Corrosion on throttle body connector
+Pedal position sensor worn or contaminated
+Corroded pedal connector
+Blown injector fuse
+Faulty injector supply relay
+Open in supply wiring
+Supply wire shorted to ground
+Weak battery, low cranking voltage
+Vacuum leak (intake gasket, brake booster, hoses)
+PCV valve stuck open
+Charge-air leak
+VNT vanes sticking with soot
+Boost pressure sensor drift
+Boost pipe disconnected or cracked
+Intake hose split
+DPF full of ash
+DPF pressure sensor failed
+Sensor sample hoses clogged with soot
+Sample hoses clogged or kinked
+DPF heavily loaded after multiple aborted regenerations
+Predominantly short-trip operation
+Differential pressure sensor reading drifted high
+Open or shorted wiring to the position sensor
+Failed Hall element after thermal cycling
+Wiring open or chafed near turbo
+Reductant pump weak or failed
+Reductant filter clogged with crystals
+Leak in pressurised reductant line
+SCR catalyst aged or poisoned
+NOx sensor drift
+Exhaust leak between upstream and downstream NOx sensors
+Poor reductant quality or contamination
+Dosing module clogged with urea crystals
+SCR catalyst aged or contaminated
+NOx sensor failed
+Sensor wiring or CAN harness open
+NOx sensor aging
+Low SCR efficiency
+Oil level too low, oil sludged or wrong viscosity
+Screen at the oil control valve clogged with debris
+Oil control valve mechanically sticking
+Cam phaser worn or its locking pin sticking
+Timing chain worn or fitted incorrectly after a repair
+Sensor element or internal lead open (vibration, heat)
+Connector loose or corroded, broken wire
+Signal line shorted to positive
+Sensor aged or drifting, soot on the tip
+Cable or connector damaged by heat or vibration
+Exhaust leak before the sensor
+Exhaust temperature really deviating (injection fault)
+ECM unpowered (fuse, ground, supply wire)
+CAN wiring to ECM broken
+ECM internally failed
+TCM unpowered or grounded poorly
+CAN wiring to TCM broken
+Passerelle qui transmet mal les messages CAN
+ABS module unpowered (often a corroded ground or fuse)
+CAN wiring to ABS broken
+ABS module failed
+Cluster unpowered or fuse blown
+Cluster internal failure (common on aged TFTs)
+Wire or connector open or corroded
+Control module reference or ground
+Connector off or wire open
+Wiring routing or chafing at the pump unit
+Sensor ground open or short to 5 V
+Low coolant (leak, head gasket)
+Thermostat stuck closed
+Radiator fan, fan clutch or water pump faulty, radiator clogged
+Coolant temperature sensor or harness faulty (false reading)
+Extreme load (towing, gradient, heat) with an intact cooling system
+Fuel pump relay faulty (coil open or shorted)
+Control wire from module to relay open or shorted to ground or voltage
+Relay supply, ground or fuse missing
+With a pump control module: its supply, ground or the module itself
+Power wire from relay or module to pump shorted to ground (chafing at tank or underbody)
+Relay contact not closing, fuse or battery feed to the relay missing
+Pump motor jammed or shorted (high current)
+Connector at the tank flange corroded or burnt
+Pump control module faulty
+Crankshaft position sensor faulty or aged (weak, noisy signal)
+Sensor loose or air gap wrong
+Tone wheel damaged or clogged with metal chips
+Interference, poor ground or damaged wiring
+Engine module or software
+Signal wire open or shorted to positive
+Camshaft position sensor faulty
+Ignition coil A faulty (output stage in the coil or primary winding open)
+Connector at the coil corroded, loose or with a spread pin
+Control, supply or ground wire open or chafed
+Fuse or relay of the coil supply (then usually several codes)
+Ignition coil B faulty (output stage in the coil or primary winding open)
+Purge valve connector corroded, loose or off
+Purge valve coil open or shorted
+Control wire broken or chafed, or supply missing (fuse, main relay)
+Fuel cap seal worn or cap not clicked in
+Purge or vent valve not sealing
+Porous hoses or O-rings, hairline crack in canister or filler neck
+Viscous clutch worn or leaking, or its solenoid faulty – fan does not reach or leave target speed
+Electric fan motor stiff or worn, or fan blocked
+Fan speed sensor or wiring giving a wrong value
+Radiator or condenser clogged, coolant low (Subaru logic)
+Drive belt slipping (belt-driven viscous fan)
+Sensor or switch faulty internally
+Connector corroded or oily (oil creeping through a leaking sensor)
+Signal line open or shorted to ground
+5 V reference or supply faulty (usually with other sensor codes)
+Sensor drifting or stuck (offset)
+Oil pump control valve or two-stage pump stuck in the wrong stage
+Wrong viscosity, low oil level or foaming oil
+Worn oil pump or bearings
+Oil level too low, oil loss or consumption
+Too thin oil, fuel dilution or clogged pick-up screen
+Oil pump or pressure control valve faulty or stuck
+Worn crankshaft or camshaft bearings
+False setting by software in the cold (Ram EcoDiesel)
+Connector or contacts corroded or loose
+Pressure sensor faulty
+Wire open or chafed
+Connector corroded or loose
+5 V reference shorted or failed
+Signal line shorted to positive (e.g. 5 V reference)
+Pressure sensor faulty internally
+Extreme overpressure (overcharge, blocked condenser, fan off)
+Battery weak or faulty
+Alternator or regulator (under- or overcharging)
+Jump start or charger at 24 V
+Corroded or loose battery terminals or ground strap
+Regulator or alternator overcharging
+24 V jump start or fast charger
+Missing battery or poor battery terminal (voltage spikes)
+Alternator control line from the module (smart charging)
+Battery disconnected, deeply discharged or replaced
+Interrupted constant power feed to the module (fuse, wire, corrosion)
+Main relay drops out too early, memory not saved completely at shutdown
+Internal memory defect (EEPROM/NVM)
+Internal hardware defect of the module (RAM)
+Moisture or corrosion in the module or at its connector
+Program memory corrupted by an interrupted reflash
+Internal flash or ROM defect
+Starter relay faulty (coil open)
+Control wire open, harness chafed or pinched, connector corroded
+Relay ground, fuse or supply faulty
+Connector or wire between module and alternator (corrosion, break, chafing)
+Alternator or regulator faulty, including its LIN interface
+Battery flat or faulty, jump start or charger connected
+Loose or worn drive belt
+Engine module or gateway (software, driver)
+Fuel pump relay or pump driver module faulty
+Wire or connector to relay or pump open or corroded (tank, underbody)
+Fuel pump itself (winding open, overheated)
+Fuse or ground point
+Short to ground or voltage at one of the supplied sensors or its wire
+A sensor signal wire shorted to voltage
+Harness damage (chafing, rodent bite, water in connector)
+Module internal (reference regulator)
+Short in the wire or sensor of a connected sensor (camshaft, pedal, pressure)
+Frottement ou eau dans le faisceau ou le connecteur
+Module internal voltage regulator
+Open or corroded control wire between relay coil and module or connector
+Relay coil open or relay badly seated
+Relay coil supply missing (fuse, battery positive)
+Weak battery or voltage dip
+Module driver faulty
+Clutch switch faulty or misadjusted (does not switch or too late)
+Connector or wiring at the pedal box damaged or corroded
+Floor mat or pedal stop shifted, switch bracket broken
+Driving style (pulling away or shifting without fully depressing the clutch)
+Speed sensor faulty (Hall IC or coil open or shorted)
+Connector or harness corroded, chafed or loose pins (with internal sensors also the pass-through connector)
+Metal debris on the sensor magnet or damaged reluctor wheel
+Transmission module or its sensor supply faulty
+Fluid level or quality (CVT fluid or ATF)
+Shift solenoid or pressure control valve sticking or faulty
+Clutch or brake wear, or worn variator belt, chain or pulleys
+Faulty speed sensor signal
+Fluid level too low, old or burnt fluid
+Converter clutch control valve worn or sticking, bore worn
+Lock-up clutch in the converter worn or glazed
+Solenoid mechanically sluggish (electrically fine)
+Leaking turbine shaft seals or pump

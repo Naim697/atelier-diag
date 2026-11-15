@@ -26,7 +26,7 @@ const CAT_RULES: [RegExp, string][] = [
   [/\bfuse|relay|battery|power supply|supply voltage|alternator|charging system|fusible|relais|batterie|alimentation [ée]lectrique|alternateur|low system voltage/i, 'power'],
   [/can bus|can line|can network|data bus|network|termination resist|r[ée]seau|multiplex/i, 'network'],
   [/vacuum leak|intake (air )?leak|air leak|unmetered|intake manifold gasket|pcv|breather|prise d.air|durite de d[ée]pression|reniflard|d[ée]shuileur|joint de collecteur|false air/i, 'air_leak'],
-  [/boost leak|intercooler|charge (air )?(pipe|hose|cooler)|boost (hose|pipe)|durite (de |du )?(turbo|suralimentation|d.air)|[ée]changeur|collier (de )?(turbo|durite)/i, 'boost_leak'],
+  [/boost leak|intercooler|charge[- ]air|leak in the (charge|boost)|charge (pipe|hose|cooler)|boost (hose|pipe)|durite (de |du )?(turbo|suralimentation|d.air)|[ée]changeur|collier (de )?(turbo|durite)/i, 'boost_leak'],
   [/injector|injecteur/i, 'injector'],
   [/fuel (pump|filter|pressure|quality|supply|line|rail)|pressure regulator|low fuel|contaminated fuel|water in fuel|pompe (à|a) (carburant|essence|gazole)|pompe (hp|haute pression|de gavage)|filtre (à|a) (carburant|gazole|essence)|r[ée]gulateur de (d[ée]bit|pression)|limaille|metering (unit|valve)|suction control/i, 'fuel'],
   [/spark plug|ignition coil|coil pack|bougie d.allumage|bobine/i, 'ignition'],
@@ -34,7 +34,7 @@ const CAT_RULES: [RegExp, string][] = [
   [/clog|carbon|soot|restrict|block(ed|age)|dirty|contaminat|plugged|build-?up|deposit|encrass|colmat|calamin|bouch|sticking due/i, 'clog'],
   [/timing (chain|belt)|compression|soupape|segment|joint de culasse|tendeur|coussinet|axe de turbo|burnt valve|valve (seat|spring|clearance)|camshaft (wear|lobe)|head gasket|piston|mechanical (fault|failure|damage|problem|wear)|worn|stretched|jumped|distribution|cha[îi]ne|courroie|usure|bearing|seized|gripp/i, 'mechanical'],
   [/oil level|low oil|wrong oil|oil (quality|viscosity|grade)|coolant level|low coolant|fluid (level|quality)|low fluid|refrigerant (charge|level)|niveau|adblue quality|def quality|diluted/i, 'fluid'],
-  [/\b(ecm|pcm|ecu|tcm|bcm|bsi|cas|ews|dde|dme)\b|control module|control unit|software|calculateur|logiciel|programming|calibration|calibrage|codage|synchronis|apprentissage|adaptation|mise (à|a) jour|bo[îi]tier/i, 'ecu'],
+  [/\b(ecm|pcm|ecu|tcm|bcm|bsi|ews|dde|dme)\b|control module|control unit|software|calculateur|logiciel|programming|calibration|calibrage|codage|synchronis|apprentissage|adaptation|mise (à|a) jour|bo[îi]tier (de servitude|[ée]lectronique)|passerelle/i, 'ecu'],
   [/sensor|sonde|capteur|d[ée]bitm[èe]tre|probe|switch|contacteur|potentiom|thermistor|transducer|sender/i, 'sensor'],
   [/solenoid|valve|actuator|motor\b|pump|thermostat|turbo|wastegate|fan|heater|glow plug|[ée]lectrovanne|vanne|actionneur|moteur |pompe|bougie de pr[ée]chauffage|ventilateur|clutch|compressor/i, 'actuator'],
 ];

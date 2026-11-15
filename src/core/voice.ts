@@ -54,8 +54,16 @@ export interface Dictation {
 export function parseDictation(raw: string): Dictation {
   let text = joinSpokenCodes(raw.replace(/\s+/g, ' ').trim());
   let km: number | null = null;
-  text = text.replace(/(\d{1,3}(?:[ .]\d{3})+|\d{2,7}) ?(?:km|kilom[èe]tres?|bornes)\b/i, (_, n: string) => { km = parseInt(n.replace(/\D/g, ''), 10); return ' '; });
+  text = text.replace(/(\d{1,3}(?:[ .]\d{3})+|\d{2,7}) ?(?:km|kilom[èe]tres?|bornes)\b/i, (_, n: string) => {
+    // « 1.5 dCi 90 148 000 km » : le 90 est la puissance, pas le début du kilométrage.
+    const groups = n.trim().split(/[ .]/);
+    let lead = '';
+    while (groups.length > 2 && parseInt(groups.join(''), 10) > 999999) lead += groups.shift() + ' ';
+    km = parseInt(groups.join('').replace(/\D/g, ''), 10);
+    return ' ' + lead;
+  });
   if (km == null) text = text.replace(/(\d{1,3}) ?(?:mille|k) ?(?:km|kilom[èe]tres?|bornes)?\b(?! ?euros?)/i, (_, n: string) => { km = parseInt(n, 10) * 1000; return ' '; });
+  text = text.replace(/\s+/g, ' ');
   let plate = '';
   text = text.replace(/\b([A-HJ-NP-TV-Z]{2})[- ]?(\d{3})[- ]?([A-HJ-NP-TV-Z]{2})\b/, (_, a: string, b: string, c: string) => { plate = `${a}-${b}-${c}`; return ' '; });
   const brand = detectBrand(text);

@@ -219,7 +219,7 @@ export function diagnose(input: DiagInput): Diagnosis {
     const existing = seenCause.get(norm);
     if (existing) { existing.seen++; existing.weight += 2; continue; }
     const cat = `u:${c.id}`;
-    const vdesc = [brandLabel(c.brand), c.model, c.engine].filter(Boolean).join(' ') || 'un véhicule';
+    const vdesc = [brandLabel(c.brand).split(',')[0], c.model, c.engine].filter(Boolean).join(' ') || 'un véhicule';
     for (const code of s.sharedCodes) {
       const a = list.find((x) => x.ref.code === code);
       if (!a) continue;

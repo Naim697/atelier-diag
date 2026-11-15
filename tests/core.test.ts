@@ -137,3 +137,14 @@ describe('classification', () => {
     expect(ftbLabel(null)).toBe('');
   });
 });
+
+describe('dictée : kilométrage collé à la puissance', () => {
+  it('sépare « 90 148 000 km »', () => {
+    const d = parseDictation('P0299 Clio 4 1.5 dCi 90 148 000 km perte de puissance');
+    expect(d.km).toBe(148000);
+    expect(d.engine).toMatch(/1.5 dCi 90/);
+  });
+  it('lit un kilométrage sans espace', () => {
+    expect(parseDictation('golf 2.0 tdi 232000 km').km).toBe(232000);
+  });
+});
