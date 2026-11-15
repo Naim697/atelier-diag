@@ -30,7 +30,9 @@ try {
   await clickText('Chercher la panne');
   await page.waitForSelector('.lead');
   let t = await text();
-  assert(/Plan de recherche/.test(t), 'plan absent');
+  assert(/Contrôles à faire sur ce code/.test(t), 'plan absent');
+  assert(/Ouvrir le guidage dans Claude/.test(t), 'guidage absent');
+  assert((await page.$eval('a[href^="https://claude.ai/new?q="]', (a) => decodeURIComponent(a.href))).includes('P0299'), 'lien Claude sans le code');
   assert(/Panne connue/i.test(t) === false || true);
   assert(/P0299/.test(t));
   await shot('03-resultat');
@@ -38,8 +40,6 @@ try {
   await shot('04-plan');
 
   // 2. On répond aux contrôles : le classement bouge
-  await clickText('Fait');
-  const lead1 = await page.$eval('.lead .v', (e) => e.textContent);
   await clickText('Mauvais');
   const lead2 = await page.$eval('.lead .v', (e) => e.textContent);
   const k = await page.$eval('.lead .k', (e) => e.textContent);

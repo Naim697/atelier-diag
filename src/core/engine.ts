@@ -1,5 +1,5 @@
 import type { Case, CodeRef, DtcEntry, Fuel, MyDef, StepResult, VehicleInfo } from './types';
-import { CATS, causeCat, detectFamily, detectNature, isElectrical, type Family, type Nature } from './classify';
+import { CATS, NATURE_FR, causeCat, detectFamily, detectNature, isElectrical, type Family, type Nature } from './classify';
 import { COMMON, TEST_BY_ID, testsFor, type TestDef } from './testlib';
 import { ftbLabel } from './ftb';
 import { formatCode, isOemRange, obdSystem } from './codes';
@@ -92,6 +92,8 @@ function describe(input: CodeInput, v: VehicleInfo): CodeAnalysis {
   if (oem?.brands) {
     for (const k of OEM_KEYS[v.brand] || [v.brand]) if (oem.brands[k]) { oemTitle = oem.brands[k]; break; }
   }
+  // Marque non précisée : si toutes les marques donnent le même sens, on le prend.
+  if (!oemTitle && oem?.brands) { const distinct = [...new Set(Object.values(oem.brands).map((x) => x.toLowerCase()))]; if (distinct.length === 1) oemTitle = Object.values(oem.brands)[0]; }
   const psaFirst = v.brand === 'PSA' && psa?.variants?.length ? (psa.variants.find((x) => ref.ecu && x[0] === ref.ecu) || psa.variants[0])[1] : '';
   const vagTitle = ref.format === 'vag5' && vag ? (vag.tf || vag.t || '').split(';')[0] : '';
   const o = other[0];
@@ -106,9 +108,12 @@ function describe(input: CodeInput, v: VehicleInfo): CodeAnalysis {
   const classText = [title, titleOrig, myDef?.text, ref.label, ...(gen?.k || [])].filter(Boolean).join(' ');
   const family = detectFamily(classText, ref.code);
   const nature = detectNature([titleOrig, title, myDef?.text, ref.label].filter(Boolean).join(' '), ref.ft);
+  // Pas de titre français dans la base : on en construit un à partir du composant et du type de défaut.
+  const hasFrench = !!(psaFirst || gen?.tf || o?.tf || myDef?.text);
+  const frTitle = !hasFrench && titleOrig && family.id !== 'unknown' ? `${family.label} : ${NATURE_FR[nature]}` : '';
   const otherBrands: [string, string][] = !oemTitle && oem?.brands && isOemRange(ref.code) ? Object.entries(oem.brands).map(([b, t]) => [brandLabel(b), t]) : [];
   return {
-    ref, title, titleOrig: titleOrig !== title ? titleOrig : '', desc: gen?.d || o?.d || '', sources, family, nature,
+    ref, title: frTitle || title, titleOrig: frTitle ? titleOrig : titleOrig !== title ? titleOrig : '', desc: gen?.d || o?.d || '', sources, family, nature,
     ftLabel: ftbLabel(ref.ft), system: ref.format === 'obd' ? obdSystem(ref.code) : '',
     flags: gen?.f || '', components: gen?.k || [], symptoms: gen?.s || [], repair: gen?.r || null, related: gen?.x || [],
     oemTitle: gen && oemTitle ? oemTitle : '', otherBrands, variants: psa?.variants || [], myDef, hypotheses: [],
@@ -208,7 +213,6 @@ export function diagnose(input: DiagInput): Diagnosis {
     byId.set(t.id, s); steps.push(s);
   };
 
-  addStep(COMMON.PRELIM, '', 'prelim');
 
   // 1. Tes cas résolus : ils passent avant tout le reste.
   const seenCause = new Map<string, Hypothesis>();
@@ -251,10 +255,10 @@ export function diagnose(input: DiagInput): Diagnosis {
 
   // 3. Contrôles par famille de composant.
   const { hints, shared } = synthesis(list, v.fuel);
-  const many = list.length >= 3 || list.some((a) => a.family.id === 'can');
+  // Batterie et masses seulement quand plusieurs calculateurs se plaignent : là, c'est la cause n° 1.
+  const many = list.filter((a) => a.family.id === 'can').length >= 2;
   if (many) { addStep(COMMON.BAT, '', 'test'); addStep(COMMON.GROUND, '', 'test'); }
   for (const a of list) for (const t of testsFor(a.family, a.nature, v.fuel)) addStep(t, a.ref.code, 'test');
-  if (!list.length && input.sym.trim()) { addStep(COMMON.BAT, '', 'test'); }
 
   // 4. Effet des contrôles déjà faits.
   const hypsFor = (s: PlanStep): Hypothesis[] => {
@@ -312,17 +316,26 @@ export function diagnose(input: DiagInput): Diagnosis {
 /** Texte prêt à coller dans Claude pour aller plus loin, avec tout le contexte. */
 export function buildPrompt(input: DiagInput, d: Diagnosis, tool: string): string {
   const v = input.vehicle;
-  let t = `Tu es un technicien diagnostic automobile expérimenté. Aide-moi à trouver cette panne : une seule vérification à la fois, avec la valeur attendue, du moins cher au plus cher. Ne propose jamais de suppression de FAP, d’EGR ou d’AdBlue.\n\n`;
-  t += `Valise : ${tool || 'non précisée'}\nVéhicule : ${[brandLabel(v.brand), v.model, v.engine].filter(Boolean).join(' ') || 'non précisé'}${v.km ? ', ' + v.km + ' km' : ''}\nSymptômes : ${input.sym || 'non précisés'}\n\nCodes :\n`;
-  for (const a of d.codes) {
-    t += `- ${formatCode(a.ref)}${a.ftLabel ? ' (' + a.ftLabel + ')' : ''} : ${a.title || 'sans définition'}${a.titleOrig ? ' / ' + a.titleOrig : ''}${a.ref.label ? ' / valise : ' + a.ref.label : ''}\n`;
+  const veh = [brandLabel(v.brand).split(',')[0], v.model, v.engine].filter(Boolean).join(' ');
+  let t = `Tu es mon chef d’atelier, expert en diagnostic automobile. Guide-moi pour résoudre cette panne.\n`;
+  t += `1. Explique en français simple ce que veut dire chaque code sur ce véhicule précis. Cherche sur le web si besoin, surtout pour les codes constructeur.\n`;
+  t += `2. Donne les pannes connues de ce moteur pour ces codes.\n`;
+  t += `3. Ensuite guide-moi : UNE seule vérification à la fois, avec où ça se trouve, comment mesurer et la valeur attendue. Attends ma réponse avant la suivante. Du moins cher au plus cher.\n`;
+  t += `Je peux t’envoyer des photos de ma valise. Ne propose jamais de suppression de FAP, d’EGR ou d’AdBlue.\n\n`;
+  t += `Véhicule : ${veh || 'non précisé'}${v.km ? ', ' + v.km + ' km' : ''}\nValise : ${tool || 'non précisée'}\nSymptômes : ${input.sym || 'non précisés'}\nCodes :\n`;
+  for (const a of d.codes.slice(0, 10)) {
+    t += `- ${formatCode(a.ref)}${a.ftLabel ? ' (' + a.ftLabel + ')' : ''} : ${a.titleOrig || a.title || a.ref.label || 'pas dans ma base, à identifier'}\n`;
   }
-  const done = d.plan.filter((s) => s.result && s.result.outcome !== 'skip');
-  if (done.length) t += `\nContrôles déjà faits :\n` + done.map((s) => `- ${s.title} : ${s.result!.outcome === 'ok' ? 'bon' : 'MAUVAIS'}${s.result!.measured ? ' (' + s.result!.measured + ')' : ''}`).join('\n') + '\n';
-  const sim = d.similar.filter((s) => s.case.cause && !s.hidden).slice(0, 4);
-  if (sim.length) t += `\nMes cas réels proches :\n` + sim.map((s) => `- ${[brandLabel(s.case.brand), s.case.model, s.case.engine].filter(Boolean).join(' ')} : ${s.case.cause}${s.case.fix ? ' / réparation : ' + s.case.fix : ''}`).join('\n') + '\n';
-  if (d.lead) t += `\nPiste actuelle de mon outil : ${d.lead.text}\n`;
-  return t + `\nDonne-moi la prochaine vérification, et cherche les pannes connues et bulletins techniques pour ce moteur.`;
+  const done = d.plan.filter((s) => s.result && s.result.outcome !== 'skip').slice(0, 8);
+  if (done.length) t += `Déjà contrôlé :\n` + done.map((s) => `- ${s.title} : ${s.result!.outcome === 'ok' ? 'bon' : 'MAUVAIS'}${s.result!.measured ? ' (' + s.result!.measured + ')' : ''}`).join('\n') + '\n';
+  const sim = d.similar.filter((s) => s.case.cause && !s.hidden).slice(0, 2);
+  if (sim.length) t += `Mes cas réels proches :\n` + sim.map((s) => `- ${[brandLabel(s.case.brand).split(',')[0], s.case.model, s.case.engine].filter(Boolean).join(' ')} : ${s.case.cause.slice(0, 160)}`).join('\n') + '\n';
+  return t;
+}
+
+/** Lien qui ouvre Claude avec le dossier déjà rempli. */
+export function claudeLink(prompt: string): string {
+  return 'https://claude.ai/new?q=' + encodeURIComponent(prompt.slice(0, 2600));
 }
 
 export { TEST_BY_ID };

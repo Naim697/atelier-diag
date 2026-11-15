@@ -1,14 +1,20 @@
 import type { PackFile } from './core/types';
 import { installPack, listPacks, type Db } from './db/db';
+import { gunzipSync, strFromU8 } from 'fflate';
 
 interface IndexFile { version: string; packs: { id: string; name: string; version: string; file: string; bytes: number; count: number }[] }
 
-/** Décompresse si besoin : certains serveurs décompressent déjà les .gz à la volée. */
+/** Décompresse si besoin. Si le navigateur n'a pas DecompressionStream (anciens iPhone), on passe par fflate. */
 async function gunzip(data: ArrayBuffer | Uint8Array): Promise<string> {
-  const head = new Uint8Array(data instanceof Uint8Array ? data.buffer.slice(data.byteOffset, data.byteOffset + 2) : data.slice(0, 2));
-  if (head[0] !== 0x1f || head[1] !== 0x8b) return new TextDecoder().decode(data);
-  const stream = new Blob([data as BlobPart]).stream().pipeThrough(new DecompressionStream('gzip'));
-  return new Response(stream).text();
+  const bytes = data instanceof Uint8Array ? data : new Uint8Array(data);
+  if (bytes[0] !== 0x1f || bytes[1] !== 0x8b) return new TextDecoder().decode(bytes);
+  if (typeof DecompressionStream === 'function') {
+    try {
+      const stream = new Blob([bytes as BlobPart]).stream().pipeThrough(new DecompressionStream('gzip'));
+      return await new Response(stream).text();
+    } catch { /* on retombe sur fflate */ }
+  }
+  return strFromU8(gunzipSync(bytes));
 }
 
 /** Paquets intégrés dans la page (version fichier unique) : balises <script type="application/octet-stream" data-pack="id">. */

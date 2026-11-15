@@ -41,6 +41,8 @@ export function Root() {
   const [draft, setDraftState] = useState<Draft>(emptyDraft());
   const [toastMsg, setToastMsg] = useState('');
   const [sheet, setSheet] = useState<{ c: Case | null; onSaved?: (c: Case) => void } | null>(null);
+  const [packError, setPackError] = useState('');
+  const [packBusy, setPackBusy] = useState('');
   const toastTimer = useRef(0);
   const draftTimer = useRef(0);
 
@@ -59,7 +61,7 @@ export function Root() {
         const d = await openStore();
         void navigator.storage?.persist?.();
         try { await ensurePacks(d, (label, ratio) => setBoot({ label: `Installation des codes : ${label}`, ratio })); }
-        catch (e) { console.warn('paquets', e); toast('Bases de codes non installées : connexion nécessaire au premier lancement.'); }
+        catch (e) { console.warn('paquets', e); setPackError((e as Error)?.message || String(e)); }
         await reloadWith(d);
         const dr = await getDraft(d);
         if (dr) setDraftState({ ...emptyDraft(), ...dr });
@@ -98,6 +100,18 @@ export function Root() {
       <main class="wrap">
         <div class="brand"><span style="color:var(--amber);display:flex"><Icon.engine /></span><span>Atelier diag</span><small>{navigator.onLine ? '' : 'hors ligne'}</small></div>
         {document.querySelector('script[data-pack-index]') && <div class="hint"><b>Version d’aperçu.</b> Elle sert à essayer la recherche de panne. Ici, ni micro, ni sauvegarde en fichier, et les données peuvent s’effacer : garde tes vrais cas pour la version installée.</div>}
+        {(packs.length === 0 || packError) && (
+          <div class="card bad"><div class="bd">
+            <b>Les bases de codes ne sont pas installées sur ce téléphone.</b>
+            <p class="note">Sans elles, aucun code n’est reconnu. Il faut être en ligne. {packError && `Erreur : ${packError}`}</p>
+            <button class="btn pri block" disabled={!!packBusy} onClick={async () => {
+              setPackBusy('Installation…'); setPackError('');
+              try { await ensurePacks(db, (label, ratio) => setPackBusy(`${label} : ${Math.round(ratio * 100)} %`)); await reloadWith(db); toast('Bases de codes installées'); }
+              catch (e) { setPackError((e as Error)?.message || String(e)); }
+              setPackBusy('');
+            }}>{packBusy || 'Installer les bases de codes'}</button>
+          </div></div>
+        )}
         {tab === 'diag' && <DiagView app={app} />}
         {tab === 'cases' && <CasesView app={app} />}
         {tab === 'base' && <BaseView app={app} />}

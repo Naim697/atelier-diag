@@ -31,19 +31,18 @@ describe('moteur de diagnostic', () => {
     expect(d.codes[0].title).toMatch(/pauvre/i);
     expect(d.codes[0].family.id).toBe('mixture');
     expect(d.lead?.cat).toBe('air_leak');
-    expect(d.plan[0].id).toBe('prelim');
     const tests = d.plan.filter((s) => s.group === 'test');
     expect(tests.map((s) => s.id)).toEqual(expect.arrayContaining(['trims', 'smoke', 'mafchk', 'fuelp']));
     const levels = tests.map((s) => s.level);
     expect(levels).toEqual([...levels].sort((a, b) => a - b));
-    expect(d.next?.id).toBe('prelim');
+    expect(d.plan.map((s) => s.id)).not.toContain('prelim');
     const pct = d.codes[0].hypotheses.reduce((n, h) => n + h.pct, 0);
     expect(pct).toBeGreaterThan(95); expect(pct).toBeLessThan(105);
   });
 
   it('les résultats de contrôle font évoluer la piste', () => {
     const base = mk('P0171', { vehicle: veh({ fuel: 'essence' }) });
-    const d1 = diagnose({ ...base, results: [res('prelim', 'ok'), res('smoke', 'ok')] });
+    const d1 = diagnose({ ...base, results: [res('smoke', 'ok')] });
     expect(d1.lead?.cat).not.toBe('air_leak');
     expect(d1.codes[0].hypotheses.find((h) => h.cat === 'air_leak')?.status).toBe('cleared');
     const d2 = diagnose({ ...base, results: [res('smoke', 'ok'), res('mafchk', 'nok')] });
@@ -57,8 +56,8 @@ describe('moteur de diagnostic', () => {
     const old = blankCase({ id: 'old1', status: 'ok', brand: 'RENAULT', model: 'Clio 4', engine: '1.2 16v', codes: parseCodes('P0171'), cause: 'Durite de reniflard fendue derrière le collecteur', fix: 'Durite remplacée', notes: 'Invisible sans miroir' });
     const d = diagnose(mk('P0171', { cases: [old], vehicle: veh({ brand: 'RENAULT', model: 'Clio 4', engine: '1.2 16v', fuel: 'essence' }) }));
     expect(d.similar[0].case.id).toBe('old1');
-    expect(d.plan[1].group).toBe('cas');
-    expect(d.plan[1].how).toMatch(/Invisible sans miroir/);
+    expect(d.plan[0].group).toBe('cas');
+    expect(d.plan[0].how).toMatch(/Invisible sans miroir/);
     expect(d.lead?.source).toBe('cas');
     expect(d.lead?.text).toMatch(/reniflard/);
     const cleared = diagnose({ ...mk('P0171', { cases: [old] }), results: [res('u:old1', 'ok')] });
@@ -123,7 +122,7 @@ describe('moteur de diagnostic', () => {
     const d = diagnose(mk('4A63', { vehicle: veh({ brand: 'BMW' }) }));
     expect(d.codes[0].ref.format).toBe('hex');
     expect(d.codes[0].documented).toBe(false);
-    expect(d.plan.length).toBeGreaterThan(2);
+    expect(d.plan).toHaveLength(0); // pas de rappels génériques pour un code inconnu
   });
 
   it('PSA : libellé français par calculateur et type de défaut', () => {
@@ -150,10 +149,10 @@ describe('moteur de diagnostic', () => {
     let empty = 0;
     for (const e of packs[0].entries) {
       const d = diagnose(mk(e.code));
-      if (d.plan.length < 3) empty++;
+      if (d.plan.length < 2) empty++;
       expect(d.codes[0].hypotheses.length, e.code).toBeGreaterThan(0);
     }
-    expect(empty).toBe(0);
+    expect(empty).toBeLessThan(500); // familles sans contrôles spécifiques : le guidage Claude prend le relais
   });
 });
 

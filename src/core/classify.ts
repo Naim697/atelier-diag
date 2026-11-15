@@ -135,4 +135,11 @@ export function detectNature(title: string, ft?: number | null): Nature {
   return fromFt || 'other';
 }
 
+export const NATURE_FR: Record<Nature, string> = {
+  circuit_low: 'signal trop bas ou court-circuit à la masse', circuit_high: 'signal trop haut ou court-circuit au plus', circuit_open: 'circuit ouvert ou pas de signal',
+  circuit: 'défaut électrique du circuit', range_perf: 'valeur incohérente', intermittent: 'défaut intermittent', stuck: 'bloqué ou grippé', no_signal: 'pas de signal',
+  comm: 'perte de communication', internal: 'défaut interne', lean: 'mélange trop pauvre', rich: 'mélange trop riche', low: 'valeur ou pression trop basse', high: 'valeur ou pression trop haute',
+  efficiency: 'efficacité insuffisante', misfire: 'ratés de combustion', correlation: 'incohérence entre deux signaux', leak: 'fuite détectée', other: 'fonctionnement incorrect',
+};
+
 export const isElectrical = (n: Nature) => ['circuit_low', 'circuit_high', 'circuit_open', 'circuit', 'intermittent', 'no_signal'].includes(n);

@@ -340,7 +340,7 @@ function familyTests(fam: Family, nature: Nature, fuel: Fuel): TestDef[] {
 /** Liste des contrôles pour un code, pas encore triée. */
 export function testsFor(fam: Family, nature: Nature, fuel: Fuel): TestDef[] {
   let list = familyTests(fam, nature, fuel);
-  if (!list.length) list = fam.id === 'unknown' ? [E_VIS, BAT, E_FUSE] : electrical(fam.kind, nature);
+  if (!list.length) list = fam.id === 'unknown' ? [] : electrical(fam.kind, nature);
   else if (nature === 'intermittent' && !list.includes(E_WIGGLE)) list = [...list, E_WIGGLE];
   if ((fam.kind === 'sensor' || fam.kind === 'actuator') && !list.includes(SWAP) && fam.id !== 'airbag') list = [...list, SWAP];
   return list;

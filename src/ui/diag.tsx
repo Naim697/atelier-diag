@@ -6,7 +6,7 @@ import { blankCase, deletePhoto, lookupCodes, putCase, putDef, type Draft } from
 import { parseDictation } from '../core/voice';
 import { codesToText, formatCode, parseCodes } from '../core/codes';
 import { BRANDS, brandLabel, detectBrand } from '../core/brands';
-import { buildPrompt, diagnose, type CodeAnalysis, type Diagnosis, type Hypothesis, type PlanStep } from '../core/engine';
+import { buildPrompt, claudeLink, diagnose, type CodeAnalysis, type Diagnosis, type Hypothesis, type PlanStep } from '../core/engine';
 import { LEVELS } from '../core/testlib';
 import { CATS } from '../core/classify';
 import { ConfirmButton, Field, Fold, Icon, Mic, PhotoStrip, Select, TextMic } from './bits';
@@ -141,7 +141,15 @@ export function DiagView({ app }: { app: App }) {
       {draft.started && !diag && <p class="note">Lecture des bases…</p>}
       {diag && (
         <div id="result">
-          <LeadCard d={diag} onClose={close} />
+          {diag.codes.map((a) => <CodeCard key={a.ref.code} a={a} app={app} brand={v.brand} onItWas={close} onAdd={(c) => { set({ input: (draft.input + ' ' + c).trim() }); app.toast(c + ' ajouté : touche « Relancer »'); }} />)}
+
+          <div class="card accent"><div class="bd">
+            <h2>Me faire guider pas à pas</h2>
+            <p class="note">Claude reçoit tout le dossier (codes, véhicule, symptômes, contrôles déjà faits), t’explique le code en français, cherche les pannes connues sur le web et te guide une vérification à la fois. Tu peux lui parler et lui envoyer des photos de la valise.</p>
+            <a class="btn pri block" href={claudeLink(buildPrompt({ codes: [], vehicle: draft.vehicle, sym: draft.sym, cases: app.cases, results: draft.results }, diag, app.settings.tool))} target="_blank" rel="noopener">Ouvrir le guidage dans Claude</a>
+            <button class="btn small ghost block" style="margin-top:8px" onClick={copyPrompt}>Ou copier le dossier</button>
+          </div></div>
+          {diag.plan.length > 0 && <LeadCard d={diag} onClose={close} />}
           <Similar d={diag} app={app} />
           {diag.known.length > 0 && (
             <div class="card info"><div class="bd">
@@ -163,17 +171,16 @@ export function DiagView({ app }: { app: App }) {
             </div></div>
           )}
 
-          <div class="card"><div class="bd">
-            <div class="row between"><h2>Plan de recherche</h2><span class="tag">{diag.progress.done} / {diag.progress.total}</span></div>
+          {diag.plan.length > 0 && <div class="card"><div class="bd">
+            <div class="row between"><h2>Contrôles à faire sur ce code</h2><span class="tag">{diag.progress.done} / {diag.progress.total}</span></div>
             <p class="note">Du moins cher au plus cher. Dis « bon » ou « mauvais » à chaque contrôle : les pistes se reclassent toutes seules.</p>
             {(showAll ? diag.plan : visibleSteps(diag)).map((s, i) => (
               <Step key={s.id} s={s} n={diag.plan.indexOf(s) + 1} open={openStep ? openStep === s.id : diag.next?.id === s.id} first={i === 0}
                 toggle={() => setOpenStep(openStep === s.id || (!openStep && diag.next?.id === s.id) ? '-' : s.id)} record={record} undo={undo} app={app} />
             ))}
             {!showAll && visibleSteps(diag).length < diag.plan.length && <button class="btn small ghost block" style="margin-top:8px" onClick={() => setShowAll(true)}>Voir les {diag.plan.length - visibleSteps(diag).length} contrôles suivants</button>}
-          </div></div>
+          </div></div>}
 
-          {diag.codes.map((a) => <CodeCard key={a.ref.code} a={a} app={app} brand={v.brand} onItWas={close} onAdd={(c) => { set({ input: (draft.input + ' ' + c).trim() }); app.toast(c + ' ajouté : touche « Relancer »'); }} />)}
 
           <div class="card"><div class="bd">
             <div class="row">
@@ -181,7 +188,6 @@ export function DiagView({ app }: { app: App }) {
               <button class="btn grow" onClick={saveWip}>Enregistrer et reprendre plus tard</button>
             </div>
             <div class="row" style="margin-top:8px">
-              <button class="btn small ghost grow" onClick={copyPrompt}>Copier le dossier pour Claude</button>
               <ConfirmButton class="small ghost grow" label="Nouvelle recherche" confirm="Effacer cette recherche ?" onConfirm={() => void reset()} />
             </div>
           </div></div>
@@ -342,12 +348,12 @@ function CodeCard({ a, app, brand, onItWas, onAdd }: { a: CodeAnalysis; app: App
       {a.myDef && <div class="seen"><b>Ta définition{a.myDef.brand ? ` (${a.myDef.brand})` : ''} :</b> {a.myDef.text}{a.myDef.notes && <div style="margin-top:4px">{a.myDef.notes}</div>}</div>}
       {!a.documented && (
         <div class="hint">
-          {a.ref.format === 'df' ? 'Code Renault DF : son sens dépend du calculateur et il n’existe pas de base libre fiable.' : a.ref.format === 'hex' ? 'Code hexadécimal constructeur : pas de base libre fiable.' : 'Ce code n’est dans aucune base installée.'} Note le libellé affiché par ta valise ci-dessous : le plan s’adaptera et tu l’auras pour toujours.
+          {a.ref.format === 'df' ? 'Code Renault DF : son sens dépend du calculateur et il n’existe pas de base libre fiable.' : a.ref.format === 'hex' ? 'Code hexadécimal constructeur : pas de base libre fiable.' : 'Ce code n’est dans aucune base installée.'} Touche « Ouvrir le guidage dans Claude » : il cherchera ce code pour ce véhicule. Tu peux aussi noter ci-dessous le libellé de ta valise, il sera gardé.
         </div>
       )}
 
-      <h3>Pistes, de la plus probable à la moins probable</h3>
-      {a.hypotheses.slice(0, 7).map((h) => (
+      {a.documented && <h3>Causes, de la plus probable à la moins probable</h3>}
+      {a.documented && a.hypotheses.slice(0, 7).map((h) => (
         <div class={`hyp ${h.status}`} key={h.key}>
           <div class="l"><b>{hypLabel(h)[0]}</b><span class="pc">{h.pct} %</span></div>
           <div class="barh"><i style={`width:${h.pct}%`} /></div>
@@ -359,7 +365,7 @@ function CodeCard({ a, app, brand, onItWas, onAdd }: { a: CodeAnalysis; app: App
       ))}
 
       {(a.desc || a.symptoms.length > 0 || r || a.related.length > 0 || a.system) && (
-        <details class="fold" style="margin:12px 0 0"><summary>Explication du code</summary><div class="bd">
+        <details class="fold" style="margin:12px 0 0"><summary>Explication détaillée<span>en anglais, seuils constructeurs</span></summary><div class="bd">
           {a.system && <p class="note">{a.system}</p>}
           {a.desc && <p class="desc">{a.desc}</p>}
           {a.symptoms.length > 0 && <><h3>Symptômes typiques</h3><ul>{a.symptoms.map((s) => <li key={s}>{s}</li>)}</ul></>}
