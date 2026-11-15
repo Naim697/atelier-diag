@@ -8,7 +8,7 @@ Tout fonctionne hors ligne : les codes, le diagnostic et les cas sont stockés d
 - Saisie libre ou dictée : codes, véhicule, kilométrage et symptômes en une phrase.
 - Pistes classées et plan de contrôles du moins cher au plus cher ; chaque résultat (bon, mauvais) reclasse les pistes.
 - Tes cas résolus sont consultés en premier, puis les pannes connues du moteur, puis la base de codes.
-- 24 660 fiches de codes en paquets importables et mis à jour sans toucher aux cas.
+- 31 669 fiches de codes en paquets importables et mis à jour sans toucher aux cas.
 - Photos jointes aux fiches, sauvegarde complète en un fichier, import avec fusion.
 - Règle fixe : jamais de suppression de FAP, d'EGR ou d'AdBlue (voir `src/core/guard.ts`).
 

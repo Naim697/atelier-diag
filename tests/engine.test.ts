@@ -7,7 +7,7 @@ import { blankCase } from '../src/db/db';
 import { violatesEmissionRule } from '../src/core/guard';
 import type { DtcEntry, PackFile, StepResult, VehicleInfo, MyDef } from '../src/core/types';
 
-const packs = ['generique', 'constructeurs', 'psa', 'vag5'].map((id) => JSON.parse(gunzipSync(readFileSync(new URL(`../public/packs/${id}.json.gz`, import.meta.url))).toString()) as PackFile);
+const packs = ['generique', 'constructeurs', 'psa', 'vag5', 'bmw-hex'].map((id) => JSON.parse(gunzipSync(readFileSync(new URL(`../public/packs/${id}.json.gz`, import.meta.url))).toString()) as PackFile);
 const byCode = new Map<string, DtcEntry[]>();
 for (const p of packs) for (const e of p.entries) { const l = byCode.get(e.code) || []; l.push({ ...e, id: `${p.id}|${e.code}`, pack: p.id }); byCode.set(e.code, l); }
 
@@ -18,7 +18,7 @@ const res = (testId: string, outcome: StepResult['outcome']): StepResult => ({ t
 
 describe('paquets livrés', () => {
   it('contiennent les quatre bases et aucune proposition interdite', () => {
-    expect(packs.map((p) => p.entries.length)).toEqual([9533, 2218, 5778, 7131]);
+    expect(packs.map((p) => p.entries.length)).toEqual([9533, 9212, 5778, 7131, 15]);
     for (const p of packs) for (const e of p.entries) {
       for (const t of [e.t, e.tf, e.d, ...(e.s || []), ...(e.cs || []).map((c) => c[0])]) expect(violatesEmissionRule(t), `${p.id} ${e.code}: ${t}`).toBe(false);
     }
@@ -154,5 +154,20 @@ describe('moteur de diagnostic', () => {
       expect(d.codes[0].hypotheses.length, e.code).toBeGreaterThan(0);
     }
     expect(empty).toBe(0);
+  });
+});
+
+describe('compléments de base', () => {
+  it('code hexadécimal BMW courant : libellé et plan adapté', () => {
+    const d = diagnose(mk('29CD', { vehicle: veh({ brand: 'BMW', fuel: 'essence' }) }));
+    expect(d.codes[0].title).toMatch(/cylindre 1/);
+    expect(d.codes[0].family.id).toBe('misfire');
+    expect(d.plan.map((s) => s.id)).toContain('permute');
+  });
+  it('libellé constructeur ajouté (Nissan, Ford, Fiat)', () => {
+    const has = (code: string, brand: string) => !!byCode.get(code)?.find((e) => e.pack === 'constructeurs')?.brands?.[brand];
+    expect(has('B1200', 'NISSAN')).toBe(true);
+    expect(has('B10A2', 'FORD')).toBe(true);
+    expect([...byCode.values()].some((l) => l.some((e) => e.brands?.FIAT))).toBe(true);
   });
 });

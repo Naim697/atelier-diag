@@ -1,32 +1,32 @@
 {
- "version": "2026.11.1",
+ "version": "2026.11.2",
  "packs": [
   {
    "id": "generique",
    "name": "Codes génériques OBD (SAE J2012)",
-   "version": "2026.11.1",
+   "version": "2026.11.2",
    "license": "CC0 (OBDex), MIT (Wal33D dtc-database)",
    "source": "OBDex, Wal33D dtc-database",
    "lang": "en+fr",
    "count": 9533,
    "file": "generique.json.gz",
-   "bytes": 1093562
+   "bytes": 1093563
   },
   {
    "id": "constructeurs",
-   "name": "Codes constructeurs (32 marques)",
-   "version": "2026.11.1",
+   "name": "Codes constructeurs (34 marques)",
+   "version": "2026.11.2",
    "license": "MIT (Wal33D dtc-database), sources MCDxAI",
    "source": "Wal33D dtc-database, MCDxAI open-source-dtc-databases",
    "lang": "en",
-   "count": 2218,
+   "count": 9212,
    "file": "constructeurs.json.gz",
-   "bytes": 87509
+   "bytes": 260827
   },
   {
    "id": "psa",
    "name": "Peugeot, Citroën, DS : codes par calculateur",
-   "version": "2026.11.1",
+   "version": "2026.11.2",
    "license": "Apache 2.0",
    "source": "PSA-RE",
    "lang": "fr",
@@ -37,13 +37,24 @@
   {
    "id": "vag5",
    "name": "VAG : anciens codes à 5 chiffres",
-   "version": "2026.11.1",
+   "version": "2026.11.2",
    "license": "Open source (MCDxAI)",
    "source": "MCDxAI open-source-dtc-databases",
    "lang": "en",
    "count": 7131,
    "file": "vag5.json.gz",
-   "bytes": 137225
+   "bytes": 137227
+  },
+  {
+   "id": "bmw-hex",
+   "name": "BMW : codes hexadécimaux courants",
+   "version": "2026.11.2",
+   "license": "Rédigé pour Atelier diag",
+   "source": "Connaissance générale d’atelier, à confirmer avec le libellé de la valise",
+   "lang": "fr",
+   "count": 15,
+   "file": "bmw-hex.json.gz",
+   "bytes": 631
   }
  ]
 }

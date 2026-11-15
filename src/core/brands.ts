@@ -13,7 +13,7 @@ export const OEM_KEYS: Record<string, string[]> = {
   AUDI: ['AUDI', 'VOLKSWAGEN'], VOLKSWAGEN: ['VOLKSWAGEN', 'AUDI'], OPEL: ['GM', 'CHEVY'], BMW: ['BMW'], MERCEDES: ['MERCEDES'],
   FORD: ['FORD'], TOYOTA: ['TOYOTA', 'LEXUS'], LEXUS: ['LEXUS', 'TOYOTA'], NISSAN: ['NISSAN', 'INFINITI'], INFINITI: ['INFINITI', 'NISSAN'],
   HONDA: ['HONDA', 'ACURA'], ACURA: ['ACURA', 'HONDA'], MAZDA: ['MAZDA'], KIA: ['KIA'], HYUNDAI: ['KIA'], MITSUBISHI: ['MITSUBISHI'],
-  SUBARU: ['SUBARU'], SUZUKI: ['SUZUKI'], JAGUAR: ['JAGUAR'], CHRYSLER: ['CHRYSLER'], DODGE: ['DODGE'], JEEP: ['JEEP'],
+  FIAT: ['FIAT', 'ALFAROMEO'], SUBARU: ['SUBARU'], SUZUKI: ['SUZUKI'], JAGUAR: ['JAGUAR'], CHRYSLER: ['CHRYSLER'], DODGE: ['DODGE'], JEEP: ['JEEP'],
 };
 
 const ALIASES: [RegExp, string][] = [
@@ -48,8 +48,10 @@ export function detectBrand(text: string): string {
   return '';
 }
 
+const OEM_LABELS: Record<string, string> = { ALFAROMEO: 'Alfa Romeo', GM: 'GM, Opel', CHEVY: 'Chevrolet', GMC: 'GMC', BUICK: 'Buick', CADILLAC: 'Cadillac', PONTIAC: 'Pontiac', SATURN: 'Saturn', OLDSMOBILE: 'Oldsmobile', LINCOLN: 'Lincoln', MERCURY: 'Mercury', PLYMOUTH: 'Plymouth', GEO: 'Geo' };
+
 export function brandLabel(key: string): string {
-  return BRANDS[key] || key || '';
+  return BRANDS[key] || OEM_LABELS[key] || key || '';
 }
 
 const ENGINE_RE = /\b\d[.,]\d ?l?\b ?(?:blue ?hdi|e-?hdi|hdi|blue ?dci|dci|tdi|tsi|tfsi|fsi|tce|sce|vti|thp|pure ?tech|cdti|ecotec|jtdm?|multijet|tdci|eco ?boost|ecoblue|d-?4d|crdi|gdi|mpi|e-?tech|skyactiv|16v|8v|turbo|gti|hybrid|bifuel|gpl)?(?: ?\d{2,3}(?! ?000| ?km)\b)?(?: ?(?:ch|cv))?/i;

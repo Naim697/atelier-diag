@@ -77,7 +77,7 @@ export function Root() {
         <h2>Atelier diag</h2>
         <p class="note">{boot?.label || 'Chargement…'}</p>
         <div class="progress"><i style={`width:${Math.round((boot?.ratio || 0) * 100)}%`} /></div>
-        <p class="note">Au premier lancement, les 24 000 fiches de codes sont copiées dans le téléphone. Ensuite tout marche sans réseau.</p>
+        <p class="note">Au premier lancement, les 31 000 fiches de codes sont copiées dans le téléphone. Ensuite tout marche sans réseau.</p>
       </div></div></div>
     );
   }

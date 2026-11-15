@@ -86,7 +86,7 @@ export function BaseView({ app }: { app: App }) {
           <div key={p.id} style="border-top:1px solid var(--line);padding:8px 0">
             <div class="row between"><b>{p.name}</b><span class="tag">v{p.version}</span></div>
             <div class="note" style="margin:2px 0">{p.count.toLocaleString('fr-FR')} fiches · {p.source} · {p.license}</div>
-            {!['generique', 'constructeurs', 'psa', 'vag5'].includes(p.id) && <ConfirmButton class="small ghost" label="Désinstaller" confirm="Désinstaller ce paquet ?" onConfirm={async () => { await removePack(app.db, p.id); await app.reload(); }} />}
+            {!['generique', 'constructeurs', 'psa', 'vag5', 'bmw-hex'].includes(p.id) && <ConfirmButton class="small ghost" label="Désinstaller" confirm="Désinstaller ce paquet ?" onConfirm={async () => { await removePack(app.db, p.id); await app.reload(); }} />}
           </div>
         ))}
         <label class="btn block" style="margin-top:8px">{busy || 'Importer ou mettre à jour un paquet (.json ou .json.gz)'}

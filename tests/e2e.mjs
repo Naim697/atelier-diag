@@ -91,7 +91,7 @@ try {
   await page.waitForFunction(() => document.querySelectorAll('.item').length > 3, { timeout: 10000 });
   await shot('10-base');
   t = await text();
-  assert(/24[\s  ]?660 fiches/.test(t), 'compte de fiches inattendu : ' + t.match(/[\d\s ]+ fiches/)?.[0]);
+  assert(/31\D?669 fiches/.test(t), "compte de fiches inattendu : " + t.match(/[\d\s]+ fiches/)?.[0]);
 
   // 8. Hors ligne après installation du service worker (http://localhost est accepté par le navigateur)
   assert.deepEqual(errors, [], 'erreurs console : ' + errors.join(' | '));
