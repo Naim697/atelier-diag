@@ -29,10 +29,12 @@ export function SettingsView({ app }: { app: App }) {
     } catch { app.toast('Sauvegarde impossible.'); }
     setBusy(false);
   };
-  const doImport = async (file: File) => {
+  const doImport = async (file: File | string) => {
     setBusy(true);
     try {
-      const s = await importBackup(app.db, JSON.parse(await file.text()));
+      const text = (typeof file === 'string' ? file : await file.text()).replace(/^\uFEFF/, '').trim();
+      if (!text.startsWith('{') && !text.startsWith('[')) throw new Error('Ce fichier n’est pas une sauvegarde (il ne contient pas de JSON).');
+      const s = await importBackup(app.db, JSON.parse(text));
       await app.reload();
       app.toast(`${s.casesAdded} cas ajoutés, ${s.casesUpdated} mis à jour, ${s.casesKept} déjà à jour, ${s.defs} définitions, ${s.photos} photos.`);
     } catch (e) { app.toast((e as Error).message || 'Fichier illisible.'); }
@@ -50,8 +52,12 @@ export function SettingsView({ app }: { app: App }) {
           <button class="btn grow" disabled={busy} onClick={() => void doExport(false)}>Sans les photos</button>
         </div>
         <label class="btn block" style="margin-top:8px">Importer une sauvegarde ou l’export de l’ancien outil
-          <input type="file" accept=".json,application/json" hidden disabled={busy} onChange={(e) => { const t = e.target as HTMLInputElement; const f = t.files?.[0]; t.value = ''; if (f) void doImport(f); }} />
+          <input type="file" hidden disabled={busy} onChange={(e) => { const t = e.target as HTMLInputElement; const f = t.files?.[0]; t.value = ''; if (f) void doImport(f); }} />
         </label>
+        <button class="btn block" style="margin-top:8px" disabled={busy} onClick={async () => {
+          try { const r = await fetch('donnees-v1.json', { cache: 'no-cache' }); if (!r.ok) throw new Error('Données de l’ancien outil introuvables : il faut être en ligne.'); await doImport(await r.text()); }
+          catch (e) { app.toast((e as Error).message || 'Récupération impossible.'); }
+        }}>Récupérer mes données de l’ancien outil</button>
         <p class="note">L’import fusionne : pour chaque fiche, la version la plus récente est gardée. Rien n’est écrasé à l’aveugle.</p>
       </div></div>
 

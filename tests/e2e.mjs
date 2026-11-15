@@ -78,8 +78,7 @@ try {
 
   // 6. Reprise des données de l'ancien outil
   await clickText('Réglages', 'nav.tabs button');
-  const input = await page.$('input[type=file][accept*="json"]');
-  await input.uploadFile(new URL('../legacy/donnees-recuperees.json', import.meta.url).pathname);
+  await clickText('Récupérer mes données de l’ancien outil');
   await page.waitForFunction(() => /cas ajoutés/.test(document.body.innerText), { timeout: 10000 });
   await shot('09-reglages');
   await clickText('Mes cas', 'nav.tabs button');

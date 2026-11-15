@@ -90,7 +90,7 @@ export function BaseView({ app }: { app: App }) {
           </div>
         ))}
         <label class="btn block" style="margin-top:8px">{busy || 'Importer ou mettre à jour un paquet (.json ou .json.gz)'}
-          <input type="file" accept=".json,.gz,application/json,application/gzip" hidden disabled={!!busy} onChange={(e) => { const t = e.target as HTMLInputElement; const f = t.files?.[0]; t.value = ''; if (f) void importPack(f); }} />
+          <input type="file" hidden disabled={!!busy} onChange={(e) => { const t = e.target as HTMLInputElement; const f = t.files?.[0]; t.value = ''; if (f) void importPack(f); }} />
         </label>
         <p class="note">Un paquet remplace sa version précédente. Tes cas et tes définitions ne sont jamais touchés. Le format est décrit dans le fichier PAQUETS.md du projet.</p>
       </Fold>
