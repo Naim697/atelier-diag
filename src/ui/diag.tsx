@@ -83,8 +83,7 @@ export function DiagView({ app }: { app: App }) {
   const close = (h?: Hypothesis) => {
     const existing = draft.caseId ? app.cases.find((c) => c.id === draft.caseId) : undefined;
     const c = draftToCase(draft, diag, existing);
-    const french = (t: string) => /[éèêàçùî]|\b(de|du|la|le|les|en|ou|au|un|une)\b/i.test(t);
-    const cause = h ? (h.source === 'base' ? (h.detail && french(h.detail) ? h.detail : '') : h.source === 'type' || h.source === 'controle' ? '' : h.text) : c.cause;
+        const cause = h ? (h.source === 'base' ? (h.detail && isFrench(h.detail) ? h.detail : '') : h.source === 'type' || h.source === 'controle' ? '' : h.text) : c.cause;
     app.editCase({ ...c, status: 'ok', cause, causeCat: h && !h.cat.includes(':') ? h.cat : c.causeCat }, (saved) => {
       if (saved.status === 'ok') { app.setDraft(emptyDraft()); app.toast('Cas résolu enregistré. Il ressortira en premier la prochaine fois.'); window.scrollTo(0, 0); }
       else set({ caseId: saved.id });
@@ -192,6 +191,14 @@ export function DiagView({ app }: { app: App }) {
   );
 }
 
+const isFrench = (t: string) => /[éèêàçùî’]|\b(de|du|la|le|les|en|ou|au|un|une)\b/i.test(t);
+/** Titre et sous-titre d'une piste : le texte précis en français d'abord, la catégorie ensuite. */
+function hypLabel(h: Hypothesis): [string, string] {
+  if (h.source === 'base' && h.detail && isFrench(h.detail)) return [h.detail, CATS[h.cat] || ''];
+  if (h.source === 'cas' || h.source === 'connue') return [h.text, h.detail];
+  return [h.text, h.detail && h.detail !== h.text ? h.detail : h.source === 'type' ? 'Déduit du type de composant et de défaut' : ''];
+}
+
 function joinInput(s: string) { return parseDictation(s).codes.length ? codesToText(parseDictation(s).codes) + ' ' + s : s; }
 
 /** Par défaut : les contrôles déjà faits, le prochain, et les quatre suivants. */
@@ -223,8 +230,8 @@ function LeadCard({ d, onClose }: { d: Diagnosis; onClose(h: Hypothesis): void }
   return (
     <div class="lead">
       <div class="k">{confirmed ? 'Cause mise en évidence' : d.progress.done ? 'Piste n° 1 pour l’instant' : 'Piste de départ'}{h.code ? ' · ' + h.code : ''}</div>
-      <div class="v">{h.text}</div>
-      <div class="d">{h.source === 'cas' ? h.detail : h.source === 'connue' ? h.detail : h.detail || 'D’après la base de codes'}{h.seen > 1 ? ` · vu ${h.seen} fois chez toi` : ''}</div>
+      <div class="v">{hypLabel(h)[0]}</div>
+      <div class="d">{hypLabel(h)[1] || 'D’après la base de codes'}{h.seen > 1 ? ` · vu ${h.seen} fois chez toi` : ''}</div>
       <div class="bar"><i style={`width:${Math.max(4, h.pct)}%`} /></div>
       <div class="row between" style="margin-top:10px">
         <span class="d">{d.next ? `Prochain contrôle : ${d.next.title}` : 'Tous les contrôles sont faits.'}</span>
@@ -342,10 +349,10 @@ function CodeCard({ a, app, brand, onItWas, onAdd }: { a: CodeAnalysis; app: App
       <h3>Pistes, de la plus probable à la moins probable</h3>
       {a.hypotheses.slice(0, 7).map((h) => (
         <div class={`hyp ${h.status}`} key={h.key}>
-          <div class="l"><b>{h.text}</b><span class="pc">{h.pct} %</span></div>
+          <div class="l"><b>{hypLabel(h)[0]}</b><span class="pc">{h.pct} %</span></div>
           <div class="barh"><i style={`width:${h.pct}%`} /></div>
           <div class="row between">
-            <small>{h.source === 'cas' ? `${h.detail}${h.seen > 1 ? ` · ${h.seen} fois` : ''}` : h.source === 'connue' ? h.detail : h.detail && h.detail !== h.text ? h.detail : h.source === 'type' ? 'Déduit du type de composant et de défaut' : (CATS[h.cat] || '')}{h.status === 'cleared' ? ' · écartée par un contrôle' : h.status === 'confirmed' ? ' · mise en cause par un contrôle' : ''}</small>
+            <small>{hypLabel(h)[1]}{h.seen > 1 ? ` · ${h.seen} fois chez toi` : ''}{h.status === 'cleared' ? ' · écartée par un contrôle' : h.status === 'confirmed' ? ' · mise en cause par un contrôle' : ''}</small>
             <button class="btn small ghost" onClick={() => onItWas(h)}>C’était ça</button>
           </div>
         </div>

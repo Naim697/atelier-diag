@@ -28,7 +28,7 @@ const CAT_RULES: [RegExp, string][] = [
   [/vacuum leak|intake (air )?leak|air leak|unmetered|intake manifold gasket|pcv|breather|prise d.air|durite de d[ée]pression|reniflard|d[ée]shuileur|joint de collecteur|false air/i, 'air_leak'],
   [/boost leak|intercooler|charge[- ]air|leak in the (charge|boost)|charge (pipe|hose|cooler)|boost (hose|pipe)|durite (de |du )?(turbo|suralimentation|d.air)|[ée]changeur|collier (de )?(turbo|durite)/i, 'boost_leak'],
   [/injector|injecteur/i, 'injector'],
-  [/fuel (pump|filter|pressure|quality|supply|line|rail)|pressure regulator|low fuel|contaminated fuel|water in fuel|pompe (à|a) (carburant|essence|gazole)|pompe (hp|haute pression|de gavage)|filtre (à|a) (carburant|gazole|essence)|r[ée]gulateur de (d[ée]bit|pression)|limaille|metering (unit|valve)|suction control/i, 'fuel'],
+  [/carburant|gazole|fuel (pump|filter|pressure|quality|supply|line|rail)|pressure regulator|low fuel|contaminated fuel|water in fuel|pompe (à|a) (carburant|essence|gazole)|pompe (hp|haute pression|de gavage)|filtre (à|a) (carburant|gazole|essence)|r[ée]gulateur de (d[ée]bit|pression)|limaille|metering (unit|valve)|suction control/i, 'fuel'],
   [/spark plug|ignition coil|coil pack|bougie d.allumage|bobine/i, 'ignition'],
   [/exhaust (leak|restriction|blockage)|back ?pressure|fuite (à|a) l.[ée]chappement/i, 'exhaust'],
   [/clog|carbon|soot|restrict|block(ed|age)|dirty|contaminat|plugged|build-?up|deposit|encrass|colmat|calamin|bouch|sticking due/i, 'clog'],

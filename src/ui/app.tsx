@@ -97,6 +97,7 @@ export function Root() {
     <>
       <main class="wrap">
         <div class="brand"><span style="color:var(--amber);display:flex"><Icon.engine /></span><span>Atelier diag</span><small>{navigator.onLine ? '' : 'hors ligne'}</small></div>
+        {document.querySelector('script[data-pack-index]') && <div class="hint"><b>Version d’aperçu.</b> Elle sert à essayer la recherche de panne. Ici, ni micro, ni sauvegarde en fichier, et les données peuvent s’effacer : garde tes vrais cas pour la version installée.</div>}
         {tab === 'diag' && <DiagView app={app} />}
         {tab === 'cases' && <CasesView app={app} />}
         {tab === 'base' && <BaseView app={app} />}
