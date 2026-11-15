@@ -1,0 +1,37 @@
+{
+  "source": "Base en ligne de la page publiée « Atelier diag » (collections cases, defs, fr), relevée le 2026-11-15",
+  "version": 1,
+  "cases": [
+    {
+      "id": "cmw87ysk982zs",
+      "date": "2026-11-08",
+      "status": "ok",
+      "plate": "",
+      "brand": "BMW",
+      "model": "118d 2006",
+      "engine": "",
+      "km": "342000",
+      "codes": "BA6D1",
+      "sym": "",
+      "live": "",
+      "tests": "Batterie : bonne, validée par le mécanicien (valeurs non relevées)\nAlimentation et masses du CAS : pas contrôlées au multimètre, non nécessaires après le calibrage\nBlocage du démarreur : levé (Particularités > remettre à zéro le blocage du démarreur), OK\nMode transport : désactivation lancée (Particularités > Mode transport, contrôle à la livraison), résultat non confirmé. Le mode transport était encore signalé sur CAS, IC, FRM et CD-GW avant ce test\nEffacement des codes puis relecture DDE : 4A63 (EWS) et 4687 (papillon) présents, 4C18 absent\nCalibrage DDE-CAS, fonction F2 (valeur initiale) : réussi, démarrage immédiat\nRelecture des codes après réparation et essai routier : non faits",
+      "cause": "CAS remplacé avec une clé universelle : désynchronisation EWS entre le CAS et le DDE (code 4A63). Confirmée par le démarrage immédiat après le calibrage DDE-CAS F2.",
+      "fix": "Calibrage DDE-CAS (F2, valeur initiale) sur la Launch : réparation faite, démarrage obtenu.\nÀ faire : confirmer la désactivation du mode transport, effacer et relire tous les calculateurs, vérifier que 4A63 et 4687 ne reviennent pas, contrôler FRM (9CBD/9CBE), faire un essai routier avec redémarrage à chaud, vérifier le fonctionnement des clés.",
+      "cost": "",
+      "time": "",
+      "notes": "",
+      "created": "2026-11-08T19:22:34.905Z",
+      "updated": "2026-11-08T19:22:34.905Z"
+    }
+  ],
+  "defs": [
+    {
+      "code": "P164E",
+      "brand": "Audi, VW, Seat, Skoda (moteurs EA288, EA888…)",
+      "text": "Vanne de régulation de pression d’huile N428 : défaut électrique",
+      "notes": "Vanne dans le bloc au-dessus du carter. En panne, elle reste en pression normale (pas de danger immédiat). Contrôler : connecteur 2 broches (souvent après vidange), faisceau, test actionneur, résistance. Pièce 40 à 180 €, réf. selon moteur.",
+      "updated": "2026-11-01T16:00:00Z"
+    }
+  ],
+  "traductions_fr": []
+}
