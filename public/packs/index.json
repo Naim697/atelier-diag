@@ -1,0 +1,49 @@
+{
+ "version": "2026.11.1",
+ "packs": [
+  {
+   "id": "generique",
+   "name": "Codes génériques OBD (SAE J2012)",
+   "version": "2026.11.1",
+   "license": "CC0 (OBDex), MIT (Wal33D dtc-database)",
+   "source": "OBDex, Wal33D dtc-database",
+   "lang": "en+fr",
+   "count": 9533,
+   "file": "generique.json.gz",
+   "bytes": 1085202
+  },
+  {
+   "id": "constructeurs",
+   "name": "Codes constructeurs (32 marques)",
+   "version": "2026.11.1",
+   "license": "MIT (Wal33D dtc-database), sources MCDxAI",
+   "source": "Wal33D dtc-database, MCDxAI open-source-dtc-databases",
+   "lang": "en",
+   "count": 2218,
+   "file": "constructeurs.json.gz",
+   "bytes": 87509
+  },
+  {
+   "id": "psa",
+   "name": "Peugeot, Citroën, DS : codes par calculateur",
+   "version": "2026.11.1",
+   "license": "Apache 2.0",
+   "source": "PSA-RE",
+   "lang": "fr",
+   "count": 5778,
+   "file": "psa.json.gz",
+   "bytes": 360497
+  },
+  {
+   "id": "vag5",
+   "name": "VAG : anciens codes à 5 chiffres",
+   "version": "2026.11.1",
+   "license": "Open source (MCDxAI)",
+   "source": "MCDxAI open-source-dtc-databases",
+   "lang": "en",
+   "count": 7131,
+   "file": "vag5.json.gz",
+   "bytes": 137225
+  }
+ ]
+}
