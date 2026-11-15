@@ -5,6 +5,7 @@ import { deleteDef, getExtra, installPack, putDef, removePack, searchTitles } fr
 import { readPackFile } from '../packs';
 import { parseCodes } from '../core/codes';
 import { ConfirmButton, Fold } from './bits';
+import { PasteFiche } from './diag';
 
 type Hit = { code: string; title: string; orig: string; pack: string };
 interface Pid { p: string; n: string; u: string; r?: [number, number] }
@@ -70,9 +71,10 @@ export function BaseView({ app }: { app: App }) {
         {app.defs.map((d) => (
           <div key={d.id} style="border-top:1px solid var(--line);padding:8px 0">
             <div class="row between"><b>{d.code}{d.brand ? <span class="muted"> · {d.brand}</span> : null}</b><ConfirmButton class="small ghost" label="Retirer" confirm="Retirer ?" onConfirm={async () => { await deleteDef(app.db, d.id); await app.reload(); }} /></div>
-            <div>{d.text}</div>{d.notes && <div class="note">{d.notes}</div>}
+            <div>{d.text}</div>{d.causes && d.causes.length > 0 && <div class="note">Causes : {d.causes.join(' ; ')}</div>}{d.notes && <div class="note">{d.notes}</div>}
           </div>
         ))}
+        <PasteFiche app={app} />
         <div class="grid" style="margin-top:8px">
           <div class="f"><label for="nd_code">Code</label><input id="nd_code" value={nd.code} onInput={(e) => setNd({ ...nd, code: (e.target as HTMLInputElement).value.toUpperCase() })} placeholder="DF025" autocapitalize="characters" /></div>
           <div class="f"><label for="nd_text">Définition</label><input id="nd_text" value={nd.text} onInput={(e) => setNd({ ...nd, text: (e.target as HTMLInputElement).value })} /></div>

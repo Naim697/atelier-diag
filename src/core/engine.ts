@@ -7,6 +7,7 @@ import { brandLabel, OEM_KEYS } from './brands';
 import { findSimilar, type SimilarCase } from './similar';
 import { KNOWN, type KnownPattern } from '../data/pannes-connues';
 import { violatesEmissionRule } from './guard';
+import { FICHE_INSTRUCTION } from './fiche';
 
 export interface CodeInput { ref: CodeRef; entries: DtcEntry[]; myDef?: MyDef }
 
@@ -121,7 +122,7 @@ function describe(input: CodeInput, v: VehicleInfo): CodeAnalysis {
   };
 }
 
-function baseHypotheses(a: CodeAnalysis, entries: DtcEntry[]): Hypothesis[] {
+function baseHypotheses(a: CodeAnalysis, entries: DtcEntry[], myDef?: MyDef): Hypothesis[] {
   const code = a.ref.code;
   const gen = entries.find((e) => e.cs?.length);
   const hyp: Hypothesis[] = [];
@@ -134,6 +135,15 @@ function baseHypotheses(a: CodeAnalysis, entries: DtcEntry[]): Hypothesis[] {
       if (cat === 'other') cat = 'part';
       hyp.push(mk(cat, PRIOR[lk] ?? 1, text, 'base'));
     }
+  }
+  // Causes venues d'une fiche enregistrée par l'utilisateur (guidage Claude) : la première pèse le plus.
+  if (!hyp.length && myDef?.causes?.length) {
+    myDef.causes.forEach((text, i) => {
+      if (violatesEmissionRule(text)) return;
+      let cat = causeCat(text);
+      if (cat === 'other') cat = 'part';
+      hyp.push(mk(cat, i === 0 ? 4 : i < 3 ? 2 : 1, text, 'base'));
+    });
   }
   if (!hyp.length) {
     const el = isElectrical(a.nature);
@@ -199,7 +209,7 @@ function synthesis(list: CodeAnalysis[], fuel: Fuel): { hints: string[]; shared:
 export function diagnose(input: DiagInput): Diagnosis {
   const v = input.vehicle;
   const list = input.codes.map((c) => describe(c, v));
-  list.forEach((a, i) => (a.hypotheses = baseHypotheses(a, input.codes[i].entries)));
+  list.forEach((a, i) => (a.hypotheses = baseHypotheses(a, input.codes[i].entries, input.codes[i].myDef)));
   const refs = list.map((a) => a.ref);
   const similar = findSimilar(input.cases, { codes: refs, vehicle: v, sym: input.sym }, input.excludeCaseId);
   const known = matchKnown(v, refs, input.sym);
@@ -330,12 +340,12 @@ export function buildPrompt(input: DiagInput, d: Diagnosis, tool: string): strin
   if (done.length) t += `Déjà contrôlé :\n` + done.map((s) => `- ${s.title} : ${s.result!.outcome === 'ok' ? 'bon' : 'MAUVAIS'}${s.result!.measured ? ' (' + s.result!.measured + ')' : ''}`).join('\n') + '\n';
   const sim = d.similar.filter((s) => s.case.cause && !s.hidden).slice(0, 2);
   if (sim.length) t += `Mes cas réels proches :\n` + sim.map((s) => `- ${[brandLabel(s.case.brand).split(',')[0], s.case.model, s.case.engine].filter(Boolean).join(' ')} : ${s.case.cause.slice(0, 160)}`).join('\n') + '\n';
-  return t;
+  return t + '\n' + FICHE_INSTRUCTION;
 }
 
 /** Lien qui ouvre Claude avec le dossier déjà rempli. */
 export function claudeLink(prompt: string): string {
-  return 'https://claude.ai/new?q=' + encodeURIComponent(prompt.slice(0, 2600));
+  return 'https://claude.ai/new?q=' + encodeURIComponent(prompt.slice(0, 3200));
 }
 
 export { TEST_BY_ID };

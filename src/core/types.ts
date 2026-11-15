@@ -68,6 +68,7 @@ export interface MyDef {
   brand: string;
   text: string;
   notes: string;
+  causes?: string[];      // causes classées, de la plus fréquente à la plus rare
   updated: string;
   deleted?: boolean;
 }

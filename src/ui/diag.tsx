@@ -9,6 +9,8 @@ import { BRANDS, brandLabel, detectBrand } from '../core/brands';
 import { buildPrompt, claudeLink, diagnose, type CodeAnalysis, type Diagnosis, type Hypothesis, type PlanStep } from '../core/engine';
 import { LEVELS } from '../core/testlib';
 import { CATS } from '../core/classify';
+import { parseFiches } from '../core/fiche';
+import { violatesEmissionRule } from '../core/guard';
 import { ConfirmButton, Field, Fold, Icon, Mic, PhotoStrip, Select, TextMic } from './bits';
 
 const FUELS: [string, string][] = [['', 'Carburant'], ['essence', 'Essence'], ['diesel', 'Diesel'], ['hybride', 'Hybride'], ['gpl', 'GPL ou E85'], ['electrique', 'Électrique']];
@@ -148,6 +150,7 @@ export function DiagView({ app }: { app: App }) {
             <p class="note">Claude reçoit tout le dossier (codes, véhicule, symptômes, contrôles déjà faits), t’explique le code en français, cherche les pannes connues sur le web et te guide une vérification à la fois. Tu peux lui parler et lui envoyer des photos de la valise.</p>
             <a class="btn pri block" href={claudeLink(buildPrompt({ codes: [], vehicle: draft.vehicle, sym: draft.sym, cases: app.cases, results: draft.results }, diag, app.settings.tool))} target="_blank" rel="noopener">Ouvrir le guidage dans Claude</a>
             <button class="btn small ghost block" style="margin-top:8px" onClick={copyPrompt}>Ou copier le dossier</button>
+            <PasteFiche app={app} />
           </div></div>
           {diag.plan.length > 0 && <LeadCard d={diag} onClose={close} />}
           <Similar d={diag} app={app} />
@@ -203,6 +206,36 @@ function hypLabel(h: Hypothesis): [string, string] {
   if (h.source === 'base' && h.detail && isFrench(h.detail)) return [h.detail, CATS[h.cat] || ''];
   if (h.source === 'cas' || h.source === 'connue') return [h.text, h.detail];
   return [h.text, h.detail && h.detail !== h.text ? h.detail : h.source === 'type' ? 'Déduit du type de composant et de défaut' : ''];
+}
+
+/** Enregistre dans la base du téléphone la fiche que Claude écrit à la fin du guidage. */
+export function PasteFiche({ app }: { app: App }) {
+  const [manual, setManual] = useState(false);
+  const [text, setText] = useState('');
+  const save = async (raw: string) => {
+    const fiches = parseFiches(raw).filter((f) => !violatesEmissionRule(`${f.text} ${f.causes.join(' ')} ${f.checks}`));
+    if (!fiches.length) { setManual(true); app.toast('Pas de fiche trouvée. Copie le bloc « FICHE ATELIER DIAG » de Claude, puis colle-le ici.'); return; }
+    for (const f of fiches) await putDef(app.db, { code: f.code, brand: f.brand, text: f.text, notes: f.checks ? 'Contrôles : ' + f.checks : '', causes: f.causes });
+    await app.reload(); setText(''); setManual(false);
+    app.toast(`${fiches.map((f) => f.code).join(', ')} enregistré${fiches.length > 1 ? 's' : ''} dans ta base. Le code sera reconnu la prochaine fois.`);
+  };
+  const fromClipboard = async () => {
+    try { const t = await navigator.clipboard.readText(); if (t.trim()) { await save(t); return; } } catch { /* lecture refusée : on passe à la saisie */ }
+    setManual(true);
+  };
+  return (
+    <div style="margin-top:12px;border-top:1px solid var(--line);padding-top:12px">
+      <p class="note" style="margin-top:0">À la fin du guidage, Claude écrit une fiche du code. Copie-la, reviens ici et enregistre-la : le code sera dans ta base pour toujours.</p>
+      <button class="btn block" onClick={() => void fromClipboard()}>Coller la fiche de Claude</button>
+      {manual && (
+        <div class="f" style="margin-top:8px">
+          <label for="fiche_txt">Colle ici la fiche copiée depuis Claude</label>
+          <textarea id="fiche_txt" rows={5} value={text} onInput={(e) => setText((e.target as HTMLTextAreaElement).value)} placeholder="FICHE ATELIER DIAG&#10;CODE: …" />
+          <button class="btn pri" onClick={() => void save(text)}>Enregistrer la fiche</button>
+        </div>
+      )}
+    </div>
+  );
 }
 
 function joinInput(s: string) { return parseDictation(s).codes.length ? codesToText(parseDictation(s).codes) + ' ' + s : s; }

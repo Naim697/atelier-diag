@@ -170,3 +170,27 @@ describe('compléments de base', () => {
     expect([...byCode.values()].some((l) => l.some((e) => e.brands?.FIAT))).toBe(true);
   });
 });
+
+import { parseFiches } from '../src/core/fiche';
+describe('fiche rédigée par Claude', () => {
+  const reply = `Voilà ce que j’ai trouvé.\n\n\`\`\`\nFICHE ATELIER DIAG\nCODE: DF025\nMARQUE: Renault 1.5 dCi K9K\nDEFINITION: Circuit de commande du boîtier de préchauffage\nCAUSES: Boîtier de préchauffage défaillant ; Bougie de préchauffage coupée ; Fil de commande coupé\nCONTROLES: Résistance de chaque bougie (moins de 2 ohms), puis tension en sortie du boîtier\n\`\`\`\n\n**CODE:** 4A63\n**MARQUE:** BMW\n**DÉFINITION:** Antidémarrage EWS : clé non reconnue par le DDE\n**CAUSES:** Synchronisation CAS-DDE perdue ; Antenne de lecture\n`;
+  it('lit plusieurs fiches, avec ou sans mise en forme', () => {
+    const f = parseFiches(reply);
+    expect(f.map((x) => x.code)).toEqual(['DF025', '4A63']);
+    expect(f[0].text).toBe('Circuit de commande du boîtier de préchauffage');
+    expect(f[0].causes).toHaveLength(3);
+    expect(f[0].checks).toMatch(/2 ohms/);
+    expect(f[1].brand).toBe('BMW');
+    expect(f[1].causes[0]).toMatch(/Synchronisation/);
+  });
+  it('ignore un texte sans fiche', () => { expect(parseFiches('P0299 est un code de turbo.')).toEqual([]); });
+  it('une fiche enregistrée rend le code connu, avec ses causes et un plan', () => {
+    const f = parseFiches(reply)[0];
+    const def: MyDef = { id: f.code, code: f.code, brand: f.brand, text: f.text, notes: f.checks, causes: f.causes, updated: '' };
+    const d = diagnose({ ...mk(''), codes: inputs('DF025', { DF025: def }), vehicle: veh({ brand: 'RENAULT', fuel: 'diesel' }) });
+    expect(d.codes[0].documented).toBe(true);
+    expect(d.codes[0].family.id).toBe('glow');
+    expect(d.codes[0].hypotheses[0].detail).toMatch(/Boîtier de préchauffage/);
+    expect(d.plan.map((s) => s.id)).toContain('glowres');
+  });
+});
